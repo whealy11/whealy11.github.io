@@ -1,12 +1,75 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Will Shane Healy</title>
-</head>
-<body>
+---
+layout: default
+---
+
+<section class="intro">
   <h1>Will Shane Healy</h1>
-  <p>Writing about things I find interesting.</p>
-</body>
-</html>
+
+  <p class="intro-text">
+    I'm interested in machine learning, mathematics, markets,
+    technology, and other things I find interesting.
+  </p>
+
+  <div class="intro-images">
+    <img src="/assets/images/intro1.svg" alt="Placeholder image">
+    <img src="/assets/images/intro2.svg" alt="Placeholder image">
+  </div>
+</section>
+
+<section class="writing">
+  <div class="tabs">
+    <button class="tab active" onclick="showSection('technical', this)">
+      Technical
+    </button>
+
+    <button class="tab" onclick="showSection('nontechnical', this)">
+      Non-Technical
+    </button>
+  </div>
+
+  <div id="technical" class="essay-section active-section">
+    {% for post in site.posts %}
+      {% if post.category == "technical" %}
+        <a href="{{ post.url }}" class="essay-card">
+          <img src="{{ post.image }}" alt="">
+          <div class="essay-info">
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.description }}</p>
+          </div>
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div id="nontechnical" class="essay-section">
+    {% for post in site.posts %}
+      {% if post.category == "nontechnical" %}
+        <a href="{{ post.url }}" class="essay-card">
+          <img src="{{ post.image }}" alt="">
+          <div class="essay-info">
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.description }}</p>
+          </div>
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+<script>
+function showSection(section, button) {
+  document
+    .querySelectorAll('.essay-section')
+    .forEach(el => el.classList.remove('active-section'));
+
+  document
+    .querySelectorAll('.tab')
+    .forEach(el => el.classList.remove('active'));
+
+  document
+    .getElementById(section)
+    .classList.add('active-section');
+
+  button.classList.add('active');
+}
+</script>
