@@ -47,14 +47,22 @@ $d_v$ can differ from $d$, but many implementations have them equal. We will ass
 The i'th row of Q, K, and V represent the i'th token in the sequence. I will let $x_i$ represent the i'th row of a matrix X and let $X_i$ represen thte i'th column of a matrix X. $q_i$, $k_i$, and $v_i$ are all linear transformations of some common embedding for the token at that index. Usually the common embedding is the sum of a fixed base embedding and a positional embedding. So
 
 $$
-q_i = (b_{token_i} + p_i)^T W_Q,
+q_i = (b_{token_i} + p_i)^T W_Q
+$$
+
+$$
+k_i = (b_{token_i} + p_i)^T W_K
+$$
+
+$$
+v_i = (b_{token_i} + p_i)^T W_V
 $$
 
 where $W_Q \in R^{dim(b) \times d}$ is the linear transformation, $b_{token_i}$ is the base embedding for the token at position i, and $p_i$ is the positional embedding for the ith position.
 
 ### Interpretation of A
 
-Now let's consider $a_i$. $a_i$ is a contextually aware embedding of the i'th token. That means that it is an aggregation of its own token's value, the position of its own token, and the meaning and positions of the tokens surrounding it. In causal attention, which is what is most commonly used in LLMs, $a_i$ will only have context on itself and what came before it. We can write $a_i$ as the following:
+Now let's consider the i'th row of A, $a_i$. $a_i$ is a contextually aware embedding of the i'th token. That means that it is an aggregation of its own token's value, the position of its own token, and the meaning and positions of the tokens surrounding it. In causal attention, which is what is most commonly used in LLMs, $a_i$ will only have context on itself and what came before it. We can write $a_i$ as the following:
 
 $$
 a_i =
