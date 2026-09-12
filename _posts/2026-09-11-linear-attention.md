@@ -78,8 +78,9 @@ $$
 Note what this is. This is a weighted average of the rows of V. The weight for the j'th row is equal to
 
 $$
-\exp\left(\frac{q_i^T k_j}{\sqrt d}\right).
+\exp\left(\frac{q_i^T k_j}{\sqrt d}\right)
 $$
+
 We then normalize by the sum of these weights.
 ### Runtime
 
