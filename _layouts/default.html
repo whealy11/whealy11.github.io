@@ -12,7 +12,7 @@
     {% endif %}
   </title>
 
-  <link rel="stylesheet" href="/assets/css/style.css?v=4">
+  <link rel="stylesheet" href="/assets/css/style.css?v=5">
 
   <script>
     window.MathJax = {
@@ -31,6 +31,9 @@
 
 <body>
   <main>
+    {% unless page.url == "/" %}
+      <a href="/" class="back-link">← Home</a>
+    {% endunless %}
     {{ content }}
   </main>
 </body>

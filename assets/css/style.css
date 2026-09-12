@@ -25,6 +25,18 @@ main {
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.18);
 }
 
+.back-link {
+  display: inline-block;
+  margin-bottom: 28px;
+  color: #555;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.back-link:hover {
+  color: #111;
+}
+
 .intro {
   text-align: center;
   margin-bottom: 90px;
