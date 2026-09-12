@@ -17,7 +17,7 @@ The goal of this essay is to build a deep understanding of linear attention. I w
 
 ## Attention review: what is non-linear about it?
 
-Attention is a mechanism for organizing and aggregating important weights for components in a system. It became popularized by the revolutionary paper *[Attention Is All You Need](https://arxiv.org/abs/1706.03762)*, as it proved to be affective in aggregating important information in sequences of text. The formula for attention is the following:
+Attention is a mechanism for organizing and aggregating importance weights for components in a system. It became popularized by the revolutionary paper *[Attention Is All You Need](https://arxiv.org/abs/1706.03762)*, as it proved to be affective in aggregating information in sequences of text. The formula for attention is the following. *Please note that my notation differs from typical literature, where A is usually defined to be the product of Q and $$K^T$$, not the output of the attention mechanism.*
 
 $$
 A = \operatorname{softmax}\left(\frac{QK^T}{\sqrt d}\right)V
