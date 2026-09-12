@@ -6,14 +6,23 @@ body {
   margin: 0;
   font-family: Georgia, "Times New Roman", serif;
   color: #222;
-  background: #fff;
   line-height: 1.6;
+  min-height: 100vh;
+  background-color: #1a2a2e;
+  background-image: url("/assets/images/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 main {
-  max-width: 900px;
+  max-width: 720px;
+  min-height: 100vh;
   margin: 0 auto;
-  padding: 80px 24px;
+  padding: 80px 40px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.18);
 }
 
 .intro {
@@ -31,27 +40,34 @@ main {
   max-width: 600px;
   margin: 0 auto 35px;
   font-size: 20px;
-  color: #555;
+  color: #333;
 }
 
 .intro-images {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 16px;
+  max-width: 520px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .intro-images img {
-  width: 220px;
-  height: 220px;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 4px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
 }
 
 .tabs {
   display: flex;
   justify-content: center;
   gap: 45px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   margin-bottom: 45px;
 }
 
@@ -62,7 +78,7 @@ main {
   font-family: inherit;
   font-size: 19px;
   cursor: pointer;
-  color: #888;
+  color: #555;
   border-bottom: 2px solid transparent;
 }
 
@@ -91,7 +107,7 @@ main {
   text-decoration: none;
   color: inherit;
   padding: 25px 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .essay-card img {
@@ -108,17 +124,23 @@ main {
 
 .essay-info p {
   margin: 0;
-  color: #666;
+  color: #444;
 }
 
 @media (max-width: 650px) {
+  body {
+    background-attachment: scroll;
+  }
+
   main {
+    max-width: 100%;
+    margin: 0;
     padding: 45px 20px;
   }
 
-  .intro-images img {
-    width: 45%;
-    height: 160px;
+  .intro-images {
+    max-width: 100%;
+    gap: 12px;
   }
 
   .essay-card {
