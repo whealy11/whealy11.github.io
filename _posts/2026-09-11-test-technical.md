@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Linear Attention From Scratch
-description: The purpose of this essay is to build all the theory required to understand linear attention from first principles.
+description: This builds all the theory required to understand linear attention from first principles. It requires no prerequisite knowledge of kernels.
 category: technical
 image: /assets/images/linear-attention.jpg
 ---
