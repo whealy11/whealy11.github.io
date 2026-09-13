@@ -95,7 +95,17 @@ $$
 \forall z \in Im(A): \forall \delta \in \Delta: z^Tc < \delta^Tc
 $$
 
-Now imagine that for some $z \in Im(A)$, $z^Tc \neq 0$. Since $Im(A)$ is a subspace and thus closed under scalar multiplication, we could define $\hat{z} = z * t$, where $t$ is a huge positive scalar if $z^Tc > 0$ and a huge negative scalar if $z^Tc < 0$. By scaling $t$ we could make $\hat{z}^Tc$ arbitrarily large at some point surpassing $\delta^Tc$, breaking our separability requirement. For this reason, any separating hyperplane must be defined by some vector $c$ such that $A^Tc = 0$. In otherwords, c must lie in the null space of $A^T$. Now let's consider the elements of $c$. Since ${0} \in Im(A)$ the separatiing hyperplane must be defined by a $k \geq 0$. Otherwise it would not be the case that $z^Tc - k < 0$ like required for $z = {0}$. Additionally, since all the standard bases $e_1, e_2, ... e_m$ lie inside the unit simplex, it must be the case that $e_iTc - k > 0$, and since $k > 0$ this implies that $e_iTc = c_i > 0$ for $i = 1, 2, 3, ... m$. So $c > 0$.
+Now let's reason about what $c$ could be. $z$ must be orthogonal to every value in $Im(A)$. It's easiest to see why using contradiction. Imagine that for some $z \in Im(A)$ it was the case that $z^Tc \neq 0$. Since $Im(A)$ is a subspace and thus closed under scalar multiplication, we could define 
+
+$$
+\hat{z} = z * t
+$$
+
+where $t$ is a huge positive scalar if $z^Tc > 0$ and a huge negative scalar if $z^Tc < 0$. By scaling $t$ we could make $\hat{z}^Tc$ arbitrarily large, at some point surpassing $\delta^Tc$. This would break our separability requirement. So, we've reached a contradiction. For this reason, any separating hyperplane must be defined by some vector $c$ such that $A^Tc = 0$. In otherwords, c must lie in the null space of $A^T$. 
+
+Now let's consider the elements of $c$. I claim that they must all be strictly positive.
+
+Since ${0} \in Im(A)$, the separatiing hyperplane must be defined by a $k \geq 0$. Otherwise it would not be the case that $z^Tc - k < 0$ like is required for $z = {0}$. Additionally, since all the standard bases $e_1, e_2, ... e_m$ lie inside the unit simplex, it must be the case that $e_iTc - k > 0$, and since $k > 0$ this implies that $e_iTc = c_i > 0$ for $i = 1, 2, 3, ... m$. So $c > 0$.
 
 This proves the following result:
 
