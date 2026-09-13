@@ -187,7 +187,7 @@ $$
 $$
 
 ## Applications
-Now we will aim to apply these results to two fields: finance and optimization
+Now we will look at applications of these results to two fields: finance and optimization.
 
 ### Risk Neutral Pricing
 Say that we have a payout matrix of assets. Say that this is a matrix 
@@ -198,13 +198,13 @@ $$
 
 where m is the number of states which could exist in the next time period and n is the number of assets in the universe. We will define $A_{ij}$ to be the price of asset j in state i.
 
-You can construct a portfolio $x \in R^n$ where $x_j$ represents the quantity of asset j which you posess. $x_i$ can be positive or negative. Investing in a portfolio $x$ costs $p^Tx$ dollars. If $p^Tx$ is negative, then this means you are being paid to take on this portfolio, and if it is positive it means that you are payiing to take on this portfolio. The value of portfolio $x$ in state i is equal to $a_i^Tx$, where $a_i$ is the i'th row of A. If for a portfolio x
+You can construct a portfolio $x \in R^n$ where $x_j$ represents the quantity of asset j which you possess. $x_j$ can be positive or negative. The current price of each asset is represented by a price vector $p$ where $p_j$ represents the price of asset j. Investing in a portfolio $x$ costs $p^Tx$ dollars. If $p^Tx$ is negative, then this means you are being paid to take on this portfolio. If $p^Tx$ is positive it means that you are paying to take on this portfolio. The value of portfolio $x$ in state i is equal to $a_i^Tx$, where $a_i$ is the i'th row of A. If for a portfolio x
 
 $$
 Ax \geq  0
 $$
 
-Then, this portfolio is guaranteed to have a non-negative after one time step. If both
+Then, this portfolio is guaranteed to have a non-negative balance after one time step. If both
 
 $$
 Ax \geq 0
@@ -214,20 +214,43 @@ $$
 p^Tx < 0
 $$
 
-then this is an arbitrage opportunity, since we're getting paid to take on this portfolio and we can't possibly owe money at the end of the time step.
+then this is an arbitrage opportunity, since we're getting paid to take on this portfolio and we can't possibly owe money at the end of the time step. Most definitions also consider
+
+$$
+Ax > 0
+$$
+
+$$
+p^Tx \leq 0
+$$
+
+an arbitrage opportunity.
+
 Let's let 
 
 $$
 B = \begin{bmatrix} -p^T \\ A \end{bmatrix} \in R^{(m+1) \times n}
 $$ 
 
-as a column vector. Then, our arbitrage opportunity exists when
+Then, our arbitrage opportunity exists when
 
 $$
 Bx = \begin{bmatrix} -p^Tx \\ Ax \end{bmatrix} \geq 0
 $$
 
-This is eqivalent to saying that there is an x such that a$Bx$ is in the non-negative orthant. We exclude from the non-negative orthant since this is trivially satisfied with $x=0$ and would not make any money.
+and 
+
+$$
+Bx = \begin{bmatrix} -p^Tx \\ Ax \end{bmatrix} \neq 0
+$$
+
+This is eqivalent to saying that there is an x such that $Bx$ is in the non-negative orthant. We exclude 
+
+$$
+\{0\}
+$$
+
+from the non-negative orthant since it is trivially satisfied with $x=0$ and it would not make any money. We can rewrite this condition as
 
 $$
 \exists x: Bx \in R_+^{m+1} \backslash \{0\}
@@ -245,7 +268,13 @@ $$
 B^Tc = 0, c > 0
 $$
 
-Let's let $c = [a, \tilde{q}]$ where $a \in R$ and $q \in R^m$ Expanding $B^Tc$
+Let's let
+
+$$
+c = \begin{bmatrix} a \\ \tilde{q} \end{bmatrix}
+$$
+
+where $a \in R_{++}$ and $\tilde{q} \in R_{++}^m$. Expanding $B^Tc$
 
 $$
 B^Tc = [-p, A^T]c = -pa + A^T\tilde{q} = 0
@@ -255,7 +284,7 @@ $$
 pa = A^T\tilde{q}
 $$
 
-Now let us define $q = \frac{\tilde{q}}{a}
+Now let us define $q = \frac{\tilde{q}}{a}$
 
 $$
 p = A^Tq
@@ -263,7 +292,7 @@ $$
 
 where we still know that $q > 0$.
 
-Now imagine any reasonable asset matrix. One option you can do with your money is put it under your mattress. It will be there unchanged in the next time step. So, it is only reasonable for there to be some asset which has a payout equal to its cost in every state. That is, some asset j such that $p_j = 1$ and the j'th column of A is a vector of 1s. Looking at the result we just derived, this would mean that for this risk free asset, we have
+Now imagine any reasonable asset matrix. One option you have with your money is to put it under your mattress. It will be there unchanged in the next time step. So, it is only reasonable for there to be some asset which has a payout in the next time step equal to its cost in every state. That is, some asset j such that $p_j = 1$ and the j'th column of A is a vector of 1s. Looking at the result we just derived, this would mean that for this risk free asset, we have
 
 $$
 p_j = 1 = \sum_{i=1}^mq_i
