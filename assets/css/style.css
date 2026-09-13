@@ -44,6 +44,10 @@ main img {
   margin: 24px auto;
 }
 
+main img.figure-sm {
+  max-width: 320px;
+}
+
 .intro {
   text-align: center;
   margin-bottom: 90px;

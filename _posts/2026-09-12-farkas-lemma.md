@@ -30,9 +30,9 @@ $$
 replacing $\leq$ with $<$, $>$, or $\geq$ also yield valid halfspaces.
 
 ### Convex Sets and Cones
-A set is convex if it does not contain any two points such that the line segment connecting them contains a point no tin the set. For example a circle is a convex set. A star is not a convex set, since the points between two tips of the star lie outside of the star. Convex sets can be open or closed. A circle is a closed convex set. $R^n$ is an open convex set. A cone is type of open convex set defined as $\{Ax|x \geq 0\}$. It is literally shaped like a cone. Take the cone created by vectors [1, 2] and [1, 0]. The cone spanned by these two vectors looks like this:
+A set is convex if it does not contain any two points such that the line segment connecting them contains a point not in the set. For example a circle is a convex set. A star is not a convex set, since the points between two tips of the star lie outside of the star. Convex sets can be open or closed. A circle is a closed convex set. $R^n$ is an open convex set. A cone is type of open convex set defined as $\{Ax|x \geq 0\}$. It is literally shaped like a cone. Take the cone created by vectors [1, 1] and [1, 0]. The cone spanned by these two vectors looks like this:
 
-![Cone spanned by (1,0) and (1,2)](/assets/images/cone-example.png)
+<img src="/assets/images/cone-example.png" alt="Cone spanned by (1,0) and (1,1)" class="figure-sm">
 
 ### Separability of Disjoint Sets
 Not all pairs of disjoint sets are strictly separable. This is not surprising. The set of all pairs of disjoint convex sets becomes closer, but still is not a sufficient condition. Take for instance the two disjoint and convex sets:
