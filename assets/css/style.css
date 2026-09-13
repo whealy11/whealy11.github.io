@@ -37,6 +37,13 @@ main {
   color: #111;
 }
 
+main img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 24px auto;
+}
+
 .intro {
   text-align: center;
   margin-bottom: 90px;

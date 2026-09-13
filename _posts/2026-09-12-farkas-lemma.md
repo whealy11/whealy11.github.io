@@ -30,7 +30,9 @@ $$
 replacing $\leq$ with $<$, $>$, or $\geq$ also yield valid halfspaces.
 
 ### Convex Sets and Cones
-A convex set is a set which does not have any two points such that a point on the line segment connecting them is not in the set. For example a circle is a convex set. A star is not a convex set, since the points between two tips of the star lie outside of the star. Convex sets can be open or closed. A circle is a closed convex set. $R^n$ is an open convex set. A cone is type of open convex set defined as $\{Ax|x \geq 0\}$. It is literally shaped like a cone. Take the cone created by vectors [1, 2] and [1, 0]. The cone spanned by these two vectors looks like this:
+A set is convex if it does not contain any two points such that the line segment connecting them contains a point no tin the set. For example a circle is a convex set. A star is not a convex set, since the points between two tips of the star lie outside of the star. Convex sets can be open or closed. A circle is a closed convex set. $R^n$ is an open convex set. A cone is type of open convex set defined as $\{Ax|x \geq 0\}$. It is literally shaped like a cone. Take the cone created by vectors [1, 2] and [1, 0]. The cone spanned by these two vectors looks like this:
+
+![Cone spanned by (1,0) and (1,2)](/assets/images/cone-example.png)
 
 ### Separability of Disjoint Sets
 Not all pairs of disjoint sets are strictly separable. This is not surprising. The set of all pairs of disjoint convex sets becomes closer, but still is not a sufficient condition. Take for instance the two disjoint and convex sets:
@@ -43,25 +45,30 @@ $$
 D = \{(x, 0) | x \in R\}
 $$
 
-As $x \to -\infty$, $e^x \to 0$. Thus, these two sets become infinitely close and any hyperplane aiming to separate them would fail, since if the hyper plane sat an distance above the x-axis (which it needs to to) it wille ventually cross the line $e^x$.
-\\
-#### Lemma 1
-To solve this, we need to add an additional condition for two disjoint sets to be strictly separable. The sufficeint condition for two sets to be convex is that at least one set is compact, and both sets are closed. A Compact set is one where the set has finite bounds and contains its bounds. A closed set is one which contains its bounds. We will lean on this result later on. I will refer to this condition for separability as lemma 1.
+As $x \to -\infty$, $e^x \to 0$. Thus, these two sets become infinitely close and any hyperplane aiming to separate them would fail, since if the hyperplane sat any distance above the x-axis (which it needs to) it will eventually cross the line $e^x$.
+
+#### Sufficient Condition for Separability
+We need to add an additional condition for two disjoint sets to be strictly separable. The sufficeint condition for two convex sets to be separable at least one set is compact, and both sets are closed. A compact set is one where the set has finite bounds and contains its bounds. A closed set is one which contains its bounds. We will lean on this condition later on.
 
 ### Non-negative Orthant
 The non-negative orthant is the simplest cone and is defined as
 
 $$
-\{Ix | x \geq 0\}
+\{x | x \geq 0\}
 $$
+
 In $R^2$ this is simply the first quadrant.
 ## Gordon Steimke Theorem
 
-Say we have a matrix $A \in R^{m\times n}$. This matrix's image $(Im(A)$ is defined as
+Say we have a matrix $A \in R^{m\times n}$. This matrix's image $Im(A)$ is defined as
+
 $$
 Im(A) = \{Ax | x \in R^n\}
 $$
-Now consider the question of whether there exists a vector $y \neq 0 \in R^m$ such that $y \in Im(A)$ and $y \geq 0$. That is, does this subspace overlap with the non-negative orthant anywhere but the origin. Let's assume that it does not. Then, there must exist $c > 0 \in R^m$ such that $A^Tc = 0$. That is, some element strictly inside the non-negative orthant must lie in the nullspace of $A^T$. To see this, let's consider the separating hyperplane between the non-negative orthant and $C$. We are assuming that the only overlapping point between these two cones is at the origin. More rigourously
+
+Now consider the question of whether there exists a vector $y \in R^m$ such that $y \neq 0$ and $y \in Im(A)$ and $y \geq 0$. That is, does this subspace overlap with the non-negative orthant anywhere but the origin. Let's assume that it does not. 
+
+Then, there must exist $c > 0 \in R^m$ such that $A^Tc = 0$. That is, some element strictly inside the non-negative orthant must lie in the nullspace of $A^T$. To see why this is true, let's consider a separating hyperplane between the non-negative orthant and $C$. We are assuming that the only overlapping point between these two cones is at the origin. More rigourously
 
 $$
 Im(A) \cap R_+^m = \{0\}
