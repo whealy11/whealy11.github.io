@@ -125,7 +125,7 @@ $$
 and any vector $v \in R^k$, it holds that
 
 $$
-\sum_{i=1}^k\sum_{j=1}^k v_i v_j \k(x_i,x_j) \geq 0.
+\sum_{i=1}^k\sum_{j=1}^k v_i v_j k(x_i,x_j) \geq 0.
 $$
 
 At first glance this may look unrelated to the matrix definition of PSD, but consider some matrix $X$ and it's associated *Gram* or *Kernel* matrix $X^T X$. $X^T X$ is trivially PSD since
