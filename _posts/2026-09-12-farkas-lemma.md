@@ -15,7 +15,7 @@ image: /assets/images/farkas-lemma.png
 I wanted to write a piece on separability because I think it's widely overlooked by practitioners of the fields which it touches. I'm refering particularly to the field of finance. Arbitrage pricing theory can be studied deeply without ever touching linear algebra. However, if you look at these same concepts through the lense of linear algebra, many results which originally seemed purely algebraic can be understood and visualized geometrically. I think this is quite cool.
 
 ## Separability
-Separability refers to theorems and properties which make sets, points, subspaces, and objects seperable, with an emphasis on linear separability. A linear separator is called a hyerplane, and is an n - 1 dimensional surface which divides an n-dimensional vector space into two halves. In $R^2$, a hyperplane is a line. In $R^3$, a hyperplane is a plane. For higher dimensions, these surfaces are hard to visualize but share the same properties. A halfspace refers to a portion of a vector space which lies on one side of a hyperplane. A hyperplane is typically defined by two values $c$ and $k$, where $c \in R^n$ and $k \in R$. It is defined as:
+Separability refers to theorems and properties which make sets, points, subspaces, and objects separable, with an emphasis on linear separability. A linear separator is called a hyerplane, and is an n - 1 dimensional surface which divides an n-dimensional vector space into two halves. In $R^2$, a hyperplane is a line. In $R^3$, a hyperplane is a plane. For higher dimensions, these surfaces are hard to visualize but share the same properties. A halfspace refers to a portion of a vector space which lies on one side of a hyperplane. A hyperplane is typically defined by two values $c$ and $k$, where $c \in R^n$ and $k \in R$. It is defined as:
 
 $$
 \{x | c^Tx = k\}
@@ -32,8 +32,8 @@ replacing $\leq$ with $<$, $>$, or $\geq$ also yield valid halfspaces.
 ### Convex Sets and Cones
 A convex set is a set which does not have any two points such that a point on the line segment connecting them is not in the set. For example a circle is a convex set. A star is not a convex set, since the points between two tips of the star lie outside of the star. Convex sets can be open or closed. A circle is a closed convex set. $R^n$ is an open convex set. A cone is type of open convex set defined as $\{Ax|x \geq 0\}$. It is literally shaped like a cone. Take the cone created by vectors [1, 2] and [1, 0]. The cone spanned by these two vectors looks like this:
 
-### Seperability of Disjoint Sets
-Not all pairs of disjoint sets are strictly seperable. This is not surprising. The set of all pairs of disjoint convex sets becomes closer, but still is not a sufficient condition. Take for instance the two disjoint and convex sets:
+### Separability of Disjoint Sets
+Not all pairs of disjoint sets are strictly separable. This is not surprising. The set of all pairs of disjoint convex sets becomes closer, but still is not a sufficient condition. Take for instance the two disjoint and convex sets:
 
 $$
 C = \{(x, y) | y \geq e^x\}
@@ -46,7 +46,7 @@ $$
 As $x \to -\infty$, $e^x \to 0$. Thus, these two sets become infinitely close and any hyperplane aiming to separate them would fail, since if the hyper plane sat an distance above the x-axis (which it needs to to) it wille ventually cross the line $e^x$.
 \\
 #### Lemma 1
-To solve this, we need to add an additional condition for two disjoint sets to be strictly seperable. The sufficeint condition for two sets to be convex is that at least one set is compact, and both sets are closed. A Compact set is one where the set has finite bounds and contains its bounds. A closed set is one which contains its bounds. We will lean on this result later on. I will refer to this condition for seperability as lemma 1.
+To solve this, we need to add an additional condition for two disjoint sets to be strictly separable. The sufficeint condition for two sets to be convex is that at least one set is compact, and both sets are closed. A Compact set is one where the set has finite bounds and contains its bounds. A closed set is one which contains its bounds. We will lean on this result later on. I will refer to this condition for separability as lemma 1.
 
 ### Non-negative Orthant
 The non-negative orthant is the simplest cone and is defined as
@@ -61,18 +61,18 @@ Say we have a matrix $A \in R^{m\times n}$. This matrix's image $(Im(A)$ is defi
 $$
 Im(A) = \{Ax | x \in R^n\}
 $$
-Now consider the question of whether there exists a vector $y \neq 0 \in R^m$ such that $y \in Im(A)$ and $y \geq 0$. That is, does this subspace overlap with the non-negative orthant anywhere but the origin. Let's assume that it does not. Then, there must exist $c > 0 \in R^m$ such that $A^Tc = 0$. That is, some element strictly inside the non-negative orthant must lie in the nullspace of $A^T$. To see this, let's consider the seperating hyperplane between the non-negative orthant and $C$. We are assuming that the only overlapping point between these two cones is at the origin. More rigourously
+Now consider the question of whether there exists a vector $y \neq 0 \in R^m$ such that $y \in Im(A)$ and $y \geq 0$. That is, does this subspace overlap with the non-negative orthant anywhere but the origin. Let's assume that it does not. Then, there must exist $c > 0 \in R^m$ such that $A^Tc = 0$. That is, some element strictly inside the non-negative orthant must lie in the nullspace of $A^T$. To see this, let's consider the separating hyperplane between the non-negative orthant and $C$. We are assuming that the only overlapping point between these two cones is at the origin. More rigourously
 
 $$
 Im(A) \cap R_+^m = \{0\}
 $$
 
-Since these two sets are not even disjoint, they are not seperable. Let's instead consider the unit simplex defined as
+Since these two sets are not even disjoint, they are not separable. Let's instead consider the unit simplex defined as
 
 $$
 \Delta = \{x|x \geq 0, 1^Tx = 1\}
 $$
-Since this simplex lies within the non-negative orthant and does not include {0}, it must be disjoint from C. Additionally, this set is compact. Since both sets are convex, $Im(A)$ is closed, and $\Delta$ is compact, we know there must exist a seperating hyperplane between these two sets. That is, there must exist some $c$ and $k$ such that
+Since this simplex lies within the non-negative orthant and does not include {0}, it must be disjoint from C. Additionally, this set is compact. Since both sets are convex, $Im(A)$ is closed, and $\Delta$ is compact, we know there must exist a separating hyperplane between these two sets. That is, there must exist some $c$ and $k$ such that
 
 $$
 z^Tc - k <> 0 \forall z \in Im(A)
@@ -88,7 +88,7 @@ $$
 \forall z \in Im(A): \forall \delta \in \Delta: z^Tc < \delta^Tc
 $$
 
-Now imagine that for some $z \in Im(A)$, $z^Tc \neq 0$. Since $Im(A)$ is a subspace and thus closed under scalar multiplication, we could define $\hat{z} = z * t$, where $t$ is a huge positive scalar if $z^Tc > 0$ and a huge negative scalar if $z^Tc < 0$. By scaling $t$ we could make $\hat{z}^Tc$ arbitrarily large at some point surpassing $\delta^Tc$, breaking our seperability requirement. For this reason, any seperating hyperplane must be defined by some vector $c$ such that $A^Tc = 0$. In otherwords, c must lie in the null space of $A^T$. Now let's consider the elements of $c$. Since ${0} \in Im(A)$ the seperatiing hyperplane must be defined by a $k \geq 0$. Otherwise it would not be the case that $z^Tc - k < 0$ like required for $z = {0}$. Additionally, since all the standard bases $e_1, e_2, ... e_m$ lie inside the unit simplex, it must be the case that $e_iTc - k > 0$, and since $k > 0$ this implies that $e_iTc = c_i > 0$ for $i = 1, 2, 3, ... m$. So $c > 0$.
+Now imagine that for some $z \in Im(A)$, $z^Tc \neq 0$. Since $Im(A)$ is a subspace and thus closed under scalar multiplication, we could define $\hat{z} = z * t$, where $t$ is a huge positive scalar if $z^Tc > 0$ and a huge negative scalar if $z^Tc < 0$. By scaling $t$ we could make $\hat{z}^Tc$ arbitrarily large at some point surpassing $\delta^Tc$, breaking our separability requirement. For this reason, any separating hyperplane must be defined by some vector $c$ such that $A^Tc = 0$. In otherwords, c must lie in the null space of $A^T$. Now let's consider the elements of $c$. Since ${0} \in Im(A)$ the separatiing hyperplane must be defined by a $k \geq 0$. Otherwise it would not be the case that $z^Tc - k < 0$ like required for $z = {0}$. Additionally, since all the standard bases $e_1, e_2, ... e_m$ lie inside the unit simplex, it must be the case that $e_iTc - k > 0$, and since $k > 0$ this implies that $e_iTc = c_i > 0$ for $i = 1, 2, 3, ... m$. So $c > 0$.
 
 This proves the following result:
 
@@ -105,7 +105,7 @@ $$
 C = \{Ax | x \geq 0\}
 $$
 
-Asking whether there exists some point $x \geq 0$ such that $Ax = b$ is equivalent to asking whether $b \in C$. If $b \notin C$, then since $C$ contains its bounds and $\{b\}$ is a compact set, by lemma 1 there must exist a strictly seperating hyperplane seperating $b$ from $C$. Additionally, since C is a cone, and thus spawns off at an acute angle from the origin, this strictly seperating hyperplane can go through the origin, so long as we define the cone side of the sepeartion using an inclusive inequality. More simply, there must exist a separating hyperplane $c, k$ where
+Asking whether there exists some point $x \geq 0$ such that $Ax = b$ is equivalent to asking whether $b \in C$. If $b \notin C$, then since $C$ contains its bounds and $\{b\}$ is a compact set, by lemma 1 there must exist a strictly separating hyperplane separating $b$ from $C$. Additionally, since C is a cone, and thus spawns off at an acute angle from the origin, this strictly separating hyperplane can go through the origin, so long as we define the cone side of the sepeartion using an inclusive inequality. More simply, there must exist a separating hyperplane $c, k$ where
 
 $$
 \forall z \in C: z^Tc \geq k=0
