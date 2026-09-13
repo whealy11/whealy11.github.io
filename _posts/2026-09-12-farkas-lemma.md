@@ -29,7 +29,7 @@ $$
 \{x | c^Tx \leq k\}
 $$
 
-replacing $\leq$ with $<$, $>$, or $\geq$ also yield valid halfspaces.
+Replacing $\leq$ with $<$, $>$, or $\geq$ also yield valid halfspaces.
 
 ### Convex Sets and Cones
 A set is convex if it does not contain any two points such that the line segment connecting them contains a point not in the set. For example a circle is a convex set. A star is not a convex set, since the points between two tips of the star lie outside of the star. Convex sets can be open or closed. A circle is a closed convex set. $R^n$ is an open convex set. A cone is type of convex set defined as 
@@ -151,7 +151,9 @@ $$
 C = \{Ax | x \geq 0\}
 $$
 
-Asking whether there exists some point $x \geq 0$ such that $Ax = b$ is equivalent to asking whether $b \in C$. If $b \notin C$, then since $C$ contains its bounds and $\{b\}$ is a compact set, by lemma 1 there must exist a strictly separating hyperplane separating $b$ from $C$. Additionally, since C is a cone, and thus spawns off at an acute angle from the origin, this strictly separating hyperplane can go through the origin, so long as we define the cone side of the sepeartion using an inclusive inequality. More simply, there must exist a separating hyperplane $c, k$ where
+Asking whether there exists some point $x \geq 0$ such that $Ax = b$ is equivalent to asking whether $b \in C$. If $b \notin C$, then since $C$ contains its bounds and $\{b\}$ is a compact set, by our separability condition from above there must exist a strictly separating hyperplane separating $b$ from $C$. Additionally, since C is a cone, and thus spawns off at an acute angle from the origin, this strictly separating hyperplane can go through the origin, so long as we define the cone side of the separtion using an exclusive inequality. I'm not going to prove this statement rigorously, but for an intuition on why this is true visualize a cone in $R^2$, a point outside the cone, and draw any separating line. If you translate this line perpindicular to its direction until it passes through the origin, it will still yield a separating hyperplane.
+
+The algebraic implication of this is that there must exist a separating hyperplane $c, k$ where
 
 $$
 \forall z \in C: z^Tc \geq k=0
@@ -164,12 +166,15 @@ $$
 Since each $z$ can be written as $z = Ax$ for some $x \geq 0$, we can state:
 
 $$
-\forall x \geq 0: (Ax)^Tc = x^TA^Tc \geq k=0
+\forall x \geq 0: (Ax)^Tc = x^TA^Tc \geq 0
 $$
 
-Since each $x$ can take on the values of any of the basis vectors $e_i$, this inequality can only hold if $A^Tc \geq 0$.
+Now note that each $x$ can take on the values of any of the basis vectors $e_i$, so this inequality can only hold if $A^Tc \geq 0$.
 
-So, we have reached the conclusion that exactly one of the two following results are true:
+So, we have reached the conclusion that exactly one of the two following results are true for a matrix $A$ and a point $b$: 
+
+**either $b$ is in the cone of $A$'s columns or there is a strictly separating hyperplane separating the two sets whcih passes through the origin** 
+In math:
 
 $$
 \exists x \geq 0: Ax = b
