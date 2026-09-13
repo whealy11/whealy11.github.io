@@ -56,7 +56,7 @@ $$
 As $x \to -\infty$, $e^x \to 0$. Thus, these two sets become infinitely close and any hyperplane aiming to separate them would fail, since if the hyperplane sat any distance above the x-axis (which it needs to) it will eventually cross the line $e^x$.
 
 #### Sufficient Condition for Separability
-We need to add an additional condition for two disjoint sets to be strictly separable. The sufficeint condition for two convex sets to be separable at least one set is compact, and both sets are closed. A compact set is one where the set has finite bounds and contains its bounds. A closed set is one which contains its bounds. We will lean on this condition later on.
+We need to add an additional condition for two disjoint sets to be strictly separable. The sufficient condition for two convex sets to be separable is that at least one set is compact, and both sets are closed. A compact set is one where the set has finite bounds and contains its bounds. A closed set is one which contains its bounds. We will lean on this condition later on.
 
 ### Non-negative Orthant
 The non-negative orthant is the simplest cone and is defined as
@@ -74,7 +74,21 @@ $$
 Im(A) = \{Ax | x \in R^n\}
 $$
 
-Now consider the question of whether there exists a vector $y \in R^m$ such that $y \neq 0$ and $y \in Im(A)$ and $y \geq 0$. That is, does this subspace overlap with the non-negative orthant anywhere but the origin. Let's assume that it does not. 
+Now consider the question of whether there exists a vector $y \in R^m$ such that:
+
+$$
+y \neq 0
+$$ 
+
+$$
+y \in Im(A)
+$$
+
+$$
+y \geq 0
+$$
+
+Equivalently, this is asking whether the subspace defined by the image of A overlaps with the non-negative orthant anywhere but the origin. This theorem is going to be about the implications of the case where it does not. So, let's assume it does not.
 
 Then, there must exist $c > 0 \in R^m$ such that $A^Tc = 0$. That is, some element strictly inside the non-negative orthant must lie in the nullspace of $A^T$. To see why this is true, let's consider a separating hyperplane between the non-negative orthant and $C$. We are assuming that the only overlapping point between these two cones is at the origin. More rigourously
 
@@ -82,12 +96,13 @@ $$
 Im(A) \cap R_+^m = \{0\}
 $$
 
-Since these two sets are not even disjoint, they are not separable. Let's instead consider the unit simplex defined as
+Since these two sets are not even disjoint, they are not strictly separable. Let's instead consider the unit simplex defined as
 
 $$
 \Delta = \{x|x \geq 0, 1^Tx = 1\}
 $$
-Since this simplex lies within the non-negative orthant and does not include {0}, it must be disjoint from C. Additionally, this set is compact. Since both sets are convex, $Im(A)$ is closed, and $\Delta$ is compact, we know there must exist a separating hyperplane between these two sets. That is, there must exist some $c$ and $k$ such that
+
+Since this simplex lies within the non-negative orthant and does not include {0}, it must be disjoint from C. Additionally, this set is compact. Since both $Im(A)$ and $\Delta$ are convex, $Im(A)$ is closed, and $\Delta$ is compact, by the sufficient conditions for separability we stated above we know that there must exist a separating hyperplane between these two sets. That is, there must exist some $c$ and $k$ such that
 
 $$
 z^Tc - k <> 0 \forall z \in Im(A)
@@ -103,19 +118,25 @@ $$
 \forall z \in Im(A): \forall \delta \in \Delta: z^Tc < \delta^Tc
 $$
 
-Now let's reason about what $c$ could be. $z$ must be orthogonal to every value in $Im(A)$. It's easiest to see why using contradiction. Imagine that for some $z \in Im(A)$ it was the case that $z^Tc \neq 0$. Since $Im(A)$ is a subspace and thus closed under scalar multiplication, we could define 
+Now let's reason about what $c$ could be. I claim $z$ must be orthogonal to every value in $Im(A)$. It's easiest to see why using contradiction. Imagine that for some $z \in Im(A)$ it was the case that $z^Tc \neq 0$. Since $Im(A)$ is a subspace and thus closed under scalar multiplication, we could define 
 
 $$
 \hat{z} = z * t
 $$
 
-where $t$ is a huge positive scalar if $z^Tc > 0$ and a huge negative scalar if $z^Tc < 0$. By scaling $t$ we could make $\hat{z}^Tc$ arbitrarily large, at some point surpassing $\delta^Tc$. This would break our separability requirement. So, we've reached a contradiction. For this reason, any separating hyperplane must be defined by some vector $c$ such that $A^Tc = 0$. In otherwords, c must lie in the null space of $A^T$. 
+where $t$ is a huge positive scalar if $z^Tc > 0$ and a huge negative scalar if $z^Tc < 0$. By scaling $t$ we could make $\hat{z}^Tc$ arbitrarily large, at some point surpassing $\delta^Tc$. This would break our separability requirement. So, since $c$ defines our separator we've reached a contradiction. For this reason, any separating hyperplane must be defined by some vector $c$ such that $A^Tc = 0$. In other words, c must lie in the null space of $A^T$. 
 
 Now let's consider the elements of $c$. I claim that they must all be strictly positive.
 
-Since ${0} \in Im(A)$, the separatiing hyperplane must be defined by a $k \geq 0$. Otherwise it would not be the case that $z^Tc - k < 0$ like is required for $z = {0}$. Additionally, since all the standard bases $e_1, e_2, ... e_m$ lie inside the unit simplex, it must be the case that $e_iTc - k > 0$, and since $k > 0$ this implies that $e_iTc = c_i > 0$ for $i = 1, 2, 3, ... m$. So $c > 0$.
+To see why, first realize that ${0} \in Im(A)$, the separatiing hyperplane must be defined by a $k \geq 0$. Otherwise it would not be the case that $z^Tc - k < 0$ like is required for $z = {0}$. Additionally, since all the standard bases $e_1, e_2, ... e_m$ lie inside the unit simplex, it must be the case that $e_iTc - k > 0$. Since $k > 0$, we have that:
 
-This proves the following result:
+$$
+\forall i: c_i = e_iTc > e_iTc - k > 0$
+$$
+
+So $c > 0$.
+
+This completes the proof of the following result:
 
 $$
 Im(A) \cap R_+^m = \{0\} \rightarrow \exists c \in R^m:  A^Tc = 0, c > 0
