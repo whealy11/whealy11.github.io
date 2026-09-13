@@ -174,6 +174,7 @@ Now note that each $x$ can take on the values of any of the basis vectors $e_i$,
 So, we have reached the conclusion that exactly one of the two following results are true for a matrix $A$ and a point $b$: 
 
 **either $b$ is in the cone of $A$'s columns or there is a strictly separating hyperplane separating the two sets whcih passes through the origin** 
+
 In math:
 
 $$
