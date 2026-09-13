@@ -12,7 +12,7 @@ image: /assets/images/farkas-lemma.png
 *September 2026*
 
 ## Introduction
-I wanted to write a piece on separability because I think it's widely overlooked by practitioners of the fields which it touches. I'm refering particularly to the field of finance. Arbitrage pricing theory can be studied deeply without ever touching linear algebra. However, if you look at these same concepts through the lense of linear algebra, many results which originally seemed purely algebraic can be understood and visualized geometrically. I think this is quite cool.
+I wanted to write a piece on separability because I think it's widely overlooked by practitioners of the fields which it touches. I'm refering particularly to the field of finance. Arbitrage pricing theory can be studied deeply without ever touching linear algebra. However, if you look at these same concepts through the lense of linear algebra, many results which originally seemed purely algebraic can be understood and visualized geometrically. I think this is quite powerful.
 
 ## Separability
 Separability refers to theorems and properties which make sets, points, subspaces, and objects separable, with an emphasis on linear separability. A linear separator is called a hyerplane, and is an n - 1 dimensional surface which divides an n-dimensional vector space into two halves. In $R^2$, a hyperplane is a line. In $R^3$, a hyperplane is a plane. For higher dimensions, these surfaces are hard to visualize but share the same properties. A halfspace refers to a portion of a vector space which lies on one side of a hyperplane. A hyperplane is typically defined by two values $c$ and $k$, where $c \in R^n$ and $k \in R$. It is defined as:
@@ -24,15 +24,17 @@ $$
 The set of points whose dot product with a certain vector equals a constant draws a surface perpindicular to the vector. The value k translates that surface along the vector, with $k = 0$ having the surface pass through the origin.
 
 A halfspace is often defined as:
+
 $$
 \{x | c^Tx \leq k\}
 $$
+
 replacing $\leq$ with $<$, $>$, or $\geq$ also yield valid halfspaces.
 
 ### Convex Sets and Cones
 A set is convex if it does not contain any two points such that the line segment connecting them contains a point not in the set. For example a circle is a convex set. A star is not a convex set, since the points between two tips of the star lie outside of the star. Convex sets can be open or closed. A circle is a closed convex set. $R^n$ is an open convex set. A cone is type of open convex set defined as $\{Ax|x \geq 0\}$. It is literally shaped like a cone. Take the cone created by vectors [1, 1] and [1, 0]. The cone spanned by these two vectors looks like this:
 
-<img src="/assets/images/cone-example.png" alt="Cone spanned by (1,0) and (1,1)" class="figure-sm">
+<img src="/assets/images/cone-example-11.png" alt="Cone spanned by (1,0) and (1,1)" class="figure-sm">
 
 ### Separability of Disjoint Sets
 Not all pairs of disjoint sets are strictly separable. This is not surprising. The set of all pairs of disjoint convex sets becomes closer, but still is not a sufficient condition. Take for instance the two disjoint and convex sets:
