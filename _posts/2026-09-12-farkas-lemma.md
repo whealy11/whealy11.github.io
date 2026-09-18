@@ -161,7 +161,17 @@ $$
 
 Asking whether there exists some point $x \geq 0$ such that $Ax = b$ is equivalent to asking whether $b \in C$. If $b \notin C$, then since $C$ contains its bounds and $\{b\}$ is a compact set, by our separability condition from above there must exist a strictly separating hyperplane separating $b$ from $C$. 
 
-Additionally, since C is a cone, and thus spawns off at an acute angle from the origin, this strictly separating hyperplane can go through the origin, so long as we define the cone side of the separtion using an exclusive inequality. I'm not going to prove this statement rigorously, but for an intuition on why this is true visualize a cone in $R^2$, a point outside the cone, and draw any separating line. If you translate this line perpindicular to its direction until it passes through the origin, it will still yield a separating hyperplane.
+Additionally, since C is a cone, and thus spawns off from the origin, this strictly separating hyperplane can go through the origin. To see why this is true, take any cone and a point outside the cone, then define a strictly separating hyperplane. We now have:
+
+$$
+\forall z \in C: z^Tc \geq k
+$$
+
+$$
+b^Tc < k
+$$
+
+If $$k$$ is positive, then k must equal 0 because $$\{0\} \in C$$. If $$k$$ is negative, then either there exists some $$z$$ such that $$z ^T < 0$$ and this $$k$$ is necessary, or there does not exist a $$z$$ with this property and $$k$$ could be set to 0. If there did exist a $$z$$ with this property, then since cones are closed by positive scalar multiplication, we could define $$z' = tz \in C$$ for an arbitrary large positive $$t$$. Then, this would eventually become less than $$k$$. Thus, there must not exist a $$z$$ such that $$Zz^Tc < 0$$ and we can define a separating hyperplane in the same direction which passes through the origin.
 
 The algebraic implication of this is that there must exist a separating hyperplane $c, k$ where
 
@@ -183,9 +193,9 @@ Now note that each $x$ can take on the values of any of the basis vectors $e_i$,
 
 So, we have reached the conclusion that exactly one of the two following results are true for a matrix $A$ and a point $b$: 
 
-**either $b$ is in the cone of $A$'s columns or there is a strictly separating hyperplane separating the two sets whcih passes through the origin** 
+**Either $b$ is in the cone of $A$'s columns or there is a strictly separating hyperplane separating the two sets which passes through the origin** 
 
-In math:
+In math, the following two statements are strong alternatives for any matrix A and a vector b:
 
 $$
 \exists x \geq 0: Ax = b
