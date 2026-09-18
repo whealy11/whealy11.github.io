@@ -32,7 +32,9 @@ $$
 Replacing $\leq$ with $<$, $>$, or $\geq$ also yield valid halfspaces.
 
 ### Convex Sets and Cones
-A set is convex if it does not contain any two points such that the line segment connecting them contains a point not in the set. For example a circle is a convex set. A star is not a convex set, since the points between two tips of the star lie outside of the star. Convex sets can be open or closed. A circle is a closed convex set. $R^n$ is an open convex set. A cone is type of convex set defined as 
+A set is convex if it does not contain any two points such that the line segment connecting them contains a point not in the set. For example a circle is a convex set. A star is not a convex set, since the points between two tips of the star lie outside of the star. Convex sets can be bounded or unbounded. A circle is a bounded convex set. $R^n$ is an unbounded convex set. 
+
+A cone is type of convex set defined as 
 
 $$
 \{Ax|x \geq 0\}
@@ -41,6 +43,15 @@ $$
 It is literally shaped like a cone. Take the cone created by vectors [1, 1] and [1, 0]. The cone spanned by these two vectors looks like this:
 
 <img src="/assets/images/cone-example-11.png" alt="Cone spanned by (1,0) and (1,1)" class="figure-sm">
+
+### Non-negative Orthant
+The non-negative orthant is the simplest cone. It is defined as
+
+$$
+\{x | x \geq 0\}
+$$
+
+In $R^2$ this is simply the first quadrant.
 
 ### Separability of Disjoint Sets
 Not all pairs of disjoint sets are strictly separable. This is not surprising. The set of all pairs of disjoint convex sets becomes closer, but still is not a sufficient condition. Take for instance the two disjoint and convex sets:
@@ -56,19 +67,11 @@ $$
 As $x \to -\infty$, $e^x \to 0$. Thus, these two sets become infinitely close and any hyperplane aiming to separate them would fail, since if the hyperplane sat any distance above the x-axis (which it needs to) it will eventually cross the line $e^x$.
 
 #### Sufficient Condition for Separability
-We need to add an additional condition for two disjoint sets to be strictly separable. The sufficient condition for two convex sets to be separable is that at least one set is compact, and both sets are closed. A compact set is one where the set has finite bounds and contains its bounds. A closed set is one which contains its bounds. We will lean on this condition later on.
+In order for two convex sets to be separable, at least one set must be compact, and both sets must be closed. A compact set is one where the set has finite bounds and contains its bounds. A closed set is one which contains its bounds. We will lean on this condition later on.
 
-### Non-negative Orthant
-The non-negative orthant is the simplest cone and is defined as
-
-$$
-\{x | x \geq 0\}
-$$
-
-In $R^2$ this is simply the first quadrant.
 ## Gordon Steimke Theorem
 
-Say we have a matrix $A \in R^{m\times n}$. This matrix's image $Im(A)$ is defined as
+Say we have a matrix $A \in R^{m\times n}$. This matrix's image, denoted $Im(A)$, is defined as
 
 $$
 Im(A) = \{Ax | x \in R^n\}
@@ -90,22 +93,27 @@ $$
 
 Equivalently, this is asking whether the subspace defined by the image of A overlaps with the non-negative orthant anywhere but the origin. This theorem is going to be about the implications of the case where it does not. So, let's assume it does not.
 
-Then, there must exist $c > 0 \in R^m$ such that $A^Tc = 0$. That is, some element strictly inside the non-negative orthant must lie in the nullspace of $A^T$. To see why this is true, let's consider a separating hyperplane between the non-negative orthant and $C$. We are assuming that the only overlapping point between these two cones is at the origin. More rigourously
+Then, I claim there must exist $c > 0 \in R^m$ such that $A^Tc = 0$. That is, some element strictly inside the non-negative orthant must lie in the nullspace of $A^T$. I'll call this lemma 1.
+
+### Proof of lemma 1
+First consider whether there is a separating hyperplane between the non-negative orthant and $C$. We are assuming that the only overlapping point between these two cones is at the origin. More rigourously
 
 $$
 Im(A) \cap R_+^m = \{0\}
 $$
 
-Since these two sets are not even disjoint, they are not strictly separable. Let's instead consider the unit simplex defined as
+Since these two sets are not even disjoint, they are not strictly separable. So, rather than considering the entire non-negative orthant, le's instead consider the unit simplex defined as
 
 $$
 \Delta = \{x|x \geq 0, 1^Tx = 1\}
 $$
 
-Since this simplex lies within the non-negative orthant and does not include {0}, it must be disjoint from C. Additionally, this set is compact. Since both $Im(A)$ and $\Delta$ are convex, $Im(A)$ is closed, and $\Delta$ is compact, by the sufficient conditions for separability we stated above we know that there must exist a separating hyperplane between these two sets. That is, there must exist some $c$ and $k$ such that
+If you're unfamiliar with the unit simplex, it is the set of points who's l1 norm is equal to 1 and whose elements are all non-negative. It is a surface of the l1 ball in the non-negative orthant. In $$R^2$$ this is the line segment connection [1, 0] and [0, 1]. In $$R^3$$, it looks like a triangle leaning up against a corner. It is the segment of a plane created by taking all convex combinations of [1, 0, 0], [0, 1, 0], and [0, 0, 1].
+
+Since this simplex lies within the non-negative orthant and does not include {0}, it must be disjoint from C. Additionally, this set is convex and compact. Since both $Im(A)$ and $\Delta$ are convex, $Im(A)$ is closed, and $\Delta$ is compact, by the sufficient conditions for separability we stated above there must exist a separating hyperplane between these two sets. That is, there must exist some $c$ and $k$ such that
 
 $$
-z^Tc - k <> 0 \forall z \in Im(A)
+z^Tc - k < 0 \forall z \in Im(A)
 $$
 
 $$
@@ -128,7 +136,7 @@ where $t$ is a huge positive scalar if $z^Tc > 0$ and a huge negative scalar if 
 
 Now let's consider the elements of $c$. I claim that they must all be strictly positive.
 
-To see why, first realize that ${0} \in Im(A)$, the separatiing hyperplane must be defined by a $k \geq 0$. Otherwise it would not be the case that $z^Tc - k < 0$ like is required for $z = {0}$. Additionally, since all the standard bases $e_1, e_2, ... e_m$ lie inside the unit simplex, it must be the case that $e_iTc - k > 0$. Since $k > 0$, we have that:
+To see why, first realize that ${0} \in Im(A)$, the separatiing hyperplane must be defined by a $k > 0$. Otherwise the hyperplane would go through the origin and it would not be the case that $z^Tc - k < 0$ like is required for $z = {0}$. Additionally, since all the standard bases $e_1, e_2, ... e_m$ lie inside the unit simplex, it must be the case that $e_iTc - k > 0$. Since $k > 0$, we have that:
 
 $$
 \forall i: c_i = e_iTc > e_iTc - k > 0$
@@ -145,13 +153,15 @@ $$
 This result, along with its converse which is also true, is called the Gordon Steimke Theorem. We will reference this result when looking at applications.
 
 ## Farkas' Lemma
-Let's now imagine the cone defined by the columns of a matrix A
+Let's now introduce Farkas' lemma. Imagine the cone defined by the columns of a matrix A
 
 $$
 C = \{Ax | x \geq 0\}
 $$
 
-Asking whether there exists some point $x \geq 0$ such that $Ax = b$ is equivalent to asking whether $b \in C$. If $b \notin C$, then since $C$ contains its bounds and $\{b\}$ is a compact set, by our separability condition from above there must exist a strictly separating hyperplane separating $b$ from $C$. Additionally, since C is a cone, and thus spawns off at an acute angle from the origin, this strictly separating hyperplane can go through the origin, so long as we define the cone side of the separtion using an exclusive inequality. I'm not going to prove this statement rigorously, but for an intuition on why this is true visualize a cone in $R^2$, a point outside the cone, and draw any separating line. If you translate this line perpindicular to its direction until it passes through the origin, it will still yield a separating hyperplane.
+Asking whether there exists some point $x \geq 0$ such that $Ax = b$ is equivalent to asking whether $b \in C$. If $b \notin C$, then since $C$ contains its bounds and $\{b\}$ is a compact set, by our separability condition from above there must exist a strictly separating hyperplane separating $b$ from $C$. 
+
+Additionally, since C is a cone, and thus spawns off at an acute angle from the origin, this strictly separating hyperplane can go through the origin, so long as we define the cone side of the separtion using an exclusive inequality. I'm not going to prove this statement rigorously, but for an intuition on why this is true visualize a cone in $R^2$, a point outside the cone, and draw any separating line. If you translate this line perpindicular to its direction until it passes through the origin, it will still yield a separating hyperplane.
 
 The algebraic implication of this is that there must exist a separating hyperplane $c, k$ where
 
