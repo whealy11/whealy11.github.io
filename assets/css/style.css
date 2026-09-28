@@ -103,6 +103,7 @@ main img.figure-sm {
   cursor: pointer;
   color: #555;
   border-bottom: 2px solid transparent;
+  text-decoration: none;
 }
 
 .tab:hover {

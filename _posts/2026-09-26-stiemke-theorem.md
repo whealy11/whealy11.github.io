@@ -1,18 +1,18 @@
 ---
 layout: default
-title: "Separability: Theory and Applications"
-description: "This derives Farkas' Lemma and Steimke's Theorem using separability, leaning on as few unproven results as possible. It then discusses applications of the result which become largely trivial once the theory is well understood."
+title: "Geometric Intuition for Risk Neutral Pricing"
+description: "The purpose of this essay is to understand risk neutral pricing geometrically. I first introduce a linear algebra result called Stiemke's theorem. We show this theorem's correctness in low dimensions geometrically then prove it for arbitrary dimensions algebraically. I then show that this theorem proves the existence of risk neutral pricing under no arbitrage assumptions, eventually tying the finance application back into geometry."
 category: technical
-image: /assets/images/steimke-theorem.jpg
+image: /assets/images/stiemke-theorem.jpg
 ---
 
-# Risk Neutral Pricing Through Linear Algebra
+# Geometric Intuition for Risk Neutral Pricing
 
 **Will Healy**
 *September 2026*
 
 ## Motivation
-I wanted to write a piece on Steimke's theorem because I think it's widely overlooked by practitioners of the fields which it touches. I'm refering particularly to the field of finance. Arbitrage pricing theory can be studied deeply without ever touching linear algebra. However, if you look at these same concepts through the lense of linear algebra, many results which originally seemed purely algebraic can be understood and visualized geometrically. I think this is quite powerful.
+I wanted to write a piece on Stiemke's theorem because I think it's widely overlooked by practitioners of the fields which it touches. I'm refering particularly to the field of finance. Arbitrage pricing theory can be studied deeply without ever touching linear algebra. However, if you look at these same concepts through the lense of linear algebra, many results which originally seemed purely algebraic can be understood and visualized geometrically. I think this is quite powerful.
 
 ## Prerequisites on Separability
 
@@ -46,13 +46,13 @@ Let's consider what this theorem is claiming in $R^2$. $R^2$ contains two classe
 
 Take any line in $R^2$ which passes through the origin. This line will either touch the non-negative orthant in infinite places, which happens in the case of a non-negative slope, or it will touch the non-negative orthant at only the origin, which happens in the case of a negative slope. Stiemke's theorem states that in the case of a line which intersects with the non-negative orthant only at the origin, the line perpendicular to this line must go through the non-negative orthant. Equivalently, it states there is a vector strictly inside the non-negative orthant, meaning it's values are all strictly positive, which is orthogonal to the line. That is it. The following visual shows this. The blue line is our line of choice and the red arrow is the vector in the non-negative orthant which is orthogonal to it.
 
-<img src="/assets/images/steimke-lines.jpg" alt="A line through the origin and an orthogonal vector in the non-negative orthant" class="figure-sm">
+<img src="/assets/images/stiemke-lines.jpg" alt="A line through the origin and an orthogonal vector in the non-negative orthant" class="figure-sm">
 
 In $R^2$, Stiemke's entire claim is that there is this red vector in the first quadrant orthogonal to the blue vector.
 
 In $R^3$, we have a similar situation, but instead of the blue line we potentially have a plane. I say potentially because in $R^3$ a subspace can still be a line. In the case of us having a plane as our subspace, we once again have a unique line which is orthogonal to the plane. This theorem states the same thing here, that if the plane doesn't touch the non-negative orthant other than at the origin, then the line orthogonal to it must go strictly inside the non-negative orthant.
 
-<img src="/assets/images/steimke-plane.jpg" alt="A plane through the origin and an orthogonal vector in the non-negative orthant" class="figure-sm">
+<img src="/assets/images/stiemke-plane.jpg" alt="A plane through the origin and an orthogonal vector in the non-negative orthant" class="figure-sm">
 
 I think this result is quite intuitive when viewed geometrically in $R^3$ and in $R^2$. We will now prove this theorem algebraically for arbitrary dimensions.
 
@@ -141,7 +141,7 @@ $$
 Im(A) \cap R_+^m = \{0\} \rightarrow \exists c \in R^m:  A^Tc = 0, c > 0
 $$
 
-This result, along with its converse which is also true, is called the Gordan Steimke Theorem. We will now use this result to prove an interesting result in finance.
+This result, along with its converse which is also true, is called the Gordan Stiemke Theorem. We will now use this result to prove an interesting result in finance.
 
 
 ## Risk Neutral Pricing
@@ -206,7 +206,7 @@ $$
 \exists x: Bx \in R_+^{m+1} \backslash \{0\}
 $$
 
-Now recall our proof of the Gordan Steimke Theorem. We proved that
+Now recall our proof of the Gordan Stiemke Theorem. We proved that
 
 $$
 Im(A) \cap R_+^m = \{0\} \rightarrow \exists c \in R^m:  A^Tc = 0, c > 0
@@ -262,12 +262,12 @@ The assets are priced risk neutrally according to some probability distribution 
 
 In this setting, the column space of our matrix $A$ has one dimension for each state. A point in this space represents a specific portfolio's value in each of these possible states. When we added $-p^T$ as a row to the matrix, one dimension then represented the negative price of the portfolio and the rest of the dimensions represented the states. Visualizing this in $R^3$ with two states we see:
 
-<img src="/assets/images/steimke-no-arrow.jpg" alt="Payoff plane through the origin with no risk-neutral vector" class="figure-sm">
+<img src="/assets/images/stiemke-no-arrow.jpg" alt="Payoff plane through the origin with no risk-neutral vector" class="figure-sm">
 
-The blue plane represents the set of achievable (-price, value in state 1, value in state 2) triplets of any portfolio. Since in this example the plane doesn't patouch the non-negative orthant except for at the origin, invoking Stiemke's theorem tells us that perpindicular to this subspace is some vector which lies strictly in the non-negative orthant. This vector truncated at $l1$ length of 1 represents our risk neutral probabilities. Visualizing this here:
+The blue plane represents the set of achievable (-price, value in state 1, value in state 2) triplets of any portfolio. Since in this example the plane doesn't touch the non-negative orthant except for at the origin, invoking Stiemke's theorem tells us that orthogonal to this subspace is some vector which lies strictly in the non-negative orthant. This vector contains a 1 on the dimension representing the $-p^T$ row and the risk neutral probability of landing in the state represented by each dimension for every other dimension.
 
 
-<img src="/assets/images/steimke-arrow.jpg" alt="Risk-neutral probability vector orthogonal to the payoff plane" class="figure-sm">
+<img src="/assets/images/stiemke-arrow.jpg" alt="Risk-neutral probability vector orthogonal to the payoff plane" class="figure-sm">
 
 If you remember one thing from this remember the following:
 
