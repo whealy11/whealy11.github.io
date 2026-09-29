@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Convex set
+title: Separability
 permalink: /notes/separability/
 kind: prerequisite
 ---
