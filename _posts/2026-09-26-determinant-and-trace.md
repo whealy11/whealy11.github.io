@@ -377,17 +377,17 @@ Now since the eigenvalues of an upper triangular matrix are the diagonal entries
 
 ### Relationship to singular values
 
-The singular values of a matrix A are equal to the square roots of the eigenvalues of $A^TA$. There's an interesting property that the product of a matrix's eigenvalues is equal in magnitude the the product of the matrix's singular values. That is:
+The singular values of a matrix A are equal to the square roots of the eigenvalues of $A^TA$. There's an interesting property that the product of a matrix's eigenvalues is equal in magnitude to the product of the matrix's singular values. That is:
 
 $$
 |\prod_i \lambda_i | = \prod_i \sigma_i
 $$
 
-where $\sigma_i$ is the i'th singular value of A.
+where $\sigma_i$ is the i'th singular value of A. To prove this, we will rely on the fact that $Det(A) = Det(A^T)$. So, let's first show this.
 
 #### Showing $Det(A)$ is equal to $Det(A^T)$
 
-To do this, we will rely on the fact that $Det(A) = Det(A^T)$. So, let's first show this. Note that for every permutation of the rows of A, there is an inverse permutation. Imagine we define a permutation as a set of swaps. Then the inverse would be this same set of swaps in reverse order. Additionally for each unique set of swaps, there is a unique set of inverse swaps.
+Note that for every permutation of the rows of A, there is an inverse permutation. Imagine we define a permutation as a set of swaps. Then the inverse would be this same set of swaps in reverse order. Additionally for each unique set of swaps, there is a unique set of inverse swaps.
 
 We can write $Det(A)$ as:
 
@@ -450,7 +450,7 @@ When you transform a unit ball by a matrix, you are projecting each point on the
 
 The largest vector achievable through $Ax_2$ where $x_2$ is on the surface of the ball and $Ax_2$ is orthogonal to $Ax_1$ is found by putting all the weight on the second largest singular value, which is done by choosing $x_2$ to be the second row of $V^T$. This will then yield $Ax_2 = U_2 \sigma_2$.
 
-As you continue this pattern, you end up getting the $x_i$ vectors as the semi-axes of the ellipsoid formed by transforming the unit ball. That is, the semi-axes point in the directions of the columns of $U$ and they have magnitudes equal to the singular values of $A$. The columns of $U$ are called the left singular vectors of A. The columns of $V$ are called the right singular vectors of A.
+As you continue this pattern, you end up getting the $Ax_i$ vectors as the semi-axes of the ellipsoid formed by transforming the unit ball. That is, the semi-axes point in the directions of the columns of $U$ and they have magnitudes equal to the singular values of $A$. The columns of $U$ are called the left singular vectors of A. The columns of $V$ are called the right singular vectors of A.
 
 The following shows a unit ball in $R^2$ and the ellipse created by multipling a matrix times this ball:
 
