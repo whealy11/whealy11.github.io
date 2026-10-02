@@ -274,5 +274,5 @@ If you remember one thing from this remember the following:
 **For any universe of assets, if there is no arbitrage then the assets are priced risk neutrally according to a probability vector which is orthogonal to every (-price, state 1 value, state 2 value, ... state m value) vector achievable by any portfolio.** 
 
 
-I find this incredibly interesting. If anyone ever reads this I hope that they do to.
+I find this incredibly interesting. If anyone ever reads this I hope that they do too.
 

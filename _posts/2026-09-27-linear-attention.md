@@ -777,10 +777,10 @@ that can be written as
 $$
 \langle \phi(x), \phi(x') \rangle,
 $$
-for some mapping $\phi$. We then showed two important properties of kernels: that all kernels are symmetric PSD and that any symmetric PSD function is a kernel. We then used these properties to prove that three functions were kernels: dot products, polynomials of dot products, and exponentials dot products.
+for some mapping $\phi$. We then showed two important properties of kernels: that all kernels are symmetric PSD and that any symmetric PSD function is a kernel. We then used these properties to prove that three functions were kernels: dot products, polynomials of dot products, and exponentials of dot products.
 
 ### 3. Linear Attention
-Once equpped with knowledge of kernels, we finally introduced linear attention. The insight came from realizing that by replacing the $exp(q_i^Tk_j)$ term with a kernel formulation, we could pull the $q$ term out of the summation, and exploit the linearity in the kernel formulation by keeping a running sum of the previous $k$ and $kv$ terms. This meant that computing attention for an additional token after having done it for the previous tokens in that sequence was a constant time operation with respect to n.
+Once equipped with knowledge of kernels, we finally introduced linear attention. The insight came from realizing that by replacing the $exp(q_i^Tk_j)$ term with a kernel formulation, we could pull the $q$ term out of the summation, and exploit the linearity in the kernel formulation by keeping a running sum of the previous $k$ and $kv$ terms. This meant that computing attention for an additional token after having done it for the previous tokens in that sequence was a constant time operation with respect to n.
 
 The catch was that $\phi(x)$ is infinite dimensional for the exponential dot product kernel. So, we had to approximate it. We referenced one method of approximation, which does so by defining
 
