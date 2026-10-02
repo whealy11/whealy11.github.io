@@ -16,7 +16,7 @@ $$
 
 It is literally shaped like a cone. Take the cone created by vectors $\begin{bmatrix} 1 \\\\ 1 \end{bmatrix}$ and $\begin{bmatrix} 1 \\\\ 0 \end{bmatrix}$. The cone spanned by these two vectors looks like this:
 
-<img src="/assets/images/cone-example-11.png" alt="Cone spanned by (1,0) and (1,1)" class="figure-sm">
+<img src="/assets/images/convex-sets/cone.png" alt="Cone spanned by (1,0) and (1,1)" class="figure-sm">
 
 ### Non-negative Orthant
 The non-negative orthant is the simplest cone. It is defined as

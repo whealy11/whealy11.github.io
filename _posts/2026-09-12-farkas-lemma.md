@@ -3,7 +3,7 @@ layout: default
 title: "Separability and Duality in Linear Programs"
 description: "This derives Farkas' Lemma using separability, leaning on as few unproven results as possible. It then uses this result to understand duality in linear programming."
 category: technical
-image: /assets/images/farkas-lemma.png
+image: /assets/images/farkas-lemma/thumbnail.png
 ---
 
 # Separability and Duality in Linear Programs

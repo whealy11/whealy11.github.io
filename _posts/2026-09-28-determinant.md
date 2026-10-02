@@ -3,7 +3,7 @@ layout: default
 title: "A Holistic View of the Determinant"
 description: "This does a deep dive into the definition and properties of the determinant of a matrix. It aims to connect the determinant to m-linear functions, eigenvalues, and singular values, as well as provide geometric intuition for why these properties make sense."
 category: technical
-image: /assets/images/determinant.jpg
+image: /assets/images/determinant/thumbnail.jpg
 ---
 
 # A Holistic View of the Determinant
@@ -454,11 +454,11 @@ As you continue this pattern, you end up getting the $Ax_i$ vectors as the semi-
 
 The following shows a unit ball in $R^2$ and the ellipse created by multipling a matrix times this ball:
 
-<img src="/assets/images/determinant-circle-ellipse.png" alt="Unit circle and the ellipse it maps to under a matrix" class="figure-sm">
+<img src="/assets/images/determinant/circle-ellipse.png" alt="Unit circle and the ellipse it maps to under a matrix" class="figure-sm">
 
 The left singular vectors of this matrix are added here, showing that they align with the semi-axes of the ellips drawn.
 
-<img src="/assets/images/determinant-left-singular.png" alt="Unit circle, ellipse, and left singular vectors of A" class="figure-sm">
+<img src="/assets/images/determinant/left-singular.png" alt="Unit circle, ellipse, and left singular vectors of A" class="figure-sm">
 
 Now note something interesting about the volume of an ellipsoid. The volume of an ellipsoid is equal to the volume of the unit ball times the product of the lengths of the semi-axes. In $R^2$ this means that the volume is 
 
