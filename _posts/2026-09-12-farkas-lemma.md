@@ -12,7 +12,7 @@ image: /assets/images/farkas-lemma.png
 *September 2026*
 
 ## Introduction
-The goal of this piece is to understand duality in linear programming. To do this, we will first build strong intuitions on the separability of cones and points using Farkas' Lemma. Once separability is well understood, we will apply this concept to linear programming, leading to both a motivation and derivation of the dual problem for a linear program. This piece assumes you have knowledge of hyperplanes, halfspaces, convext sets, and cones. The exact required prerequisite information for hyperplanese and halfspaces can be found [here](/notes/separability/) and the required preerquisite knowledge for convext sets and cones can be found [here](/notes/convex-sets/).
+The goal of this piece is to understand duality in linear programming. To do this, we will first look at separability properties of cones and points using Farkas' Lemma. Once separability is well understood, we will apply this concept to linear programming, leading to both a motivation and derivation of the dual problem for a linear program. This piece assumes you have knowledge of hyperplanes, halfspaces, convext sets, and cones. The exact required prerequisite information for hyperplanese and halfspaces can be found [here](/notes/separability/), and the required prerequisite knowledge for convext sets and cones can be found [here](/notes/convex-sets/).
 
 
 
@@ -25,7 +25,7 @@ $$
 
 Asking whether there exists some point $x \geq 0$ such that $Ax = b$ is equivalent to asking whether $b \in C$. If $b \notin C$, then since both $C$ and $b$ are convex sets, $C$ contains its bounds, and $\{b\}$ is a compact set, there must exist a strictly separating hyperplane separating $b$ from $C$. For intuition on why these criteria make sense please see [here](/notes/separability/).
 
-Additionally, since C is a cone, and thus spawns off from the origin, this strictly separating hyperplane can go through the origin. To see why this is true, take any cone and a point outside the cone, then define a strictly separating hyperplane. We will define hyperplanes with two values $c$ and $k$ as $$\{x \\| c^Tx = k \}$$. Thus a separating hyperplane between our cone $C$ and point $b$ gives us:
+Additionally, since C is a cone, and thus spawns off from the origin, this strictly separating hyperplane *could* go through the origin. To see why this is true, take any cone and a point outside the cone, then define a strictly separating hyperplane. We will define hyperplanes with two values $c$ and $k$ as $$\{x \\| c^Tx = k \}$$. Thus a separating hyperplane between our cone $C$ and point $b$ gives us:
 
 $$
 \forall z \in C: z^Tc \geq k
@@ -35,18 +35,28 @@ $$
 b^Tc < k
 $$
 
-If $$k$$ is non-negative, then k must equal $0$ because $$\{0\} \in C$$. If $$k$$ is negative, then either there exists some $$z$$ such that $$z^Tc < 0$$ and the negative $$k$$ is necessary to truly separate these sets, or ther while still being a separating hyperplane. If there did exist a $$z$$ with this property of $$z^Tc < 0$$, then since cones are closed under positive scalar multiplication, we could define $$z' = tz \in C$$ for an arbitrary large positive $$t$$. With large enough $t$, $z'^Tc$ could become arbitrarily large in the negative direction and eventually become less than $$k$$. Thus, there must not exist a $$z$$ such that $$z^Tc < 0$$. This means any valid hyperplane orthogonal to $c$ that separates a point from a cone can be translated to go through the origin without losing its separating properties.
+Now we will show that for any $c, k$ with this property, we can set $k$ equal to $0$ and keep this property.
 
+If $$k$$ is non-negative, then k must equal $0$ because $$\{0\} \in C$$ and thus $z^T0 = 0 \geq k$. If $$k$$ is negative, then either there exists some $$z$$ such that $$z^Tc < 0$$ and the negative $$k$$ is necessary to truly separate these sets, or there is nut such a z and k could trivially be set to $0$ while still being a separating hyperplane. If there did exist a $$z$$ with this property of $$z^Tc < 0$$, then since cones are closed under positive scalar multiplication, we could define $$z' = tz \in C$$ for an arbitrary large positive $$t$$. With large enough $t$, $z'^Tc$ could become arbitrarily large in the negative direction and eventually become less than $$k$$. Thus, there must not exist a $$z$$ such that $$z^Tc < 0$$. So, it must be the case that there is no $z$ where $z^Tc < 0$ and so $k$ can be set to $0$. So, any valid hyperplane orthogonal to $c$ that separates a point from a cone can be translated along $c$ to go through the origin without losing its separating properties.
+
+So, we have reached the conclusion that exactly one of the two following results are true for a matrix $A$ and a point $b$: 
+
+**Either $b$ is in the cone of $A$'s columns**
+
+**OR**
+
+**There is a strictly separating hyperplane between $b$ and the cone of $A's$ columns which passing through the origin.** 
 
 Algebraically, this means that there must exist a separating hyperplane $c, k$ where
 
 $$
-\forall z \in C: z^Tc \geq k=0
+\forall z \in C: z^Tc \geq 0
 $$
 
 $$
-b^Tc < k=0
+b^Tc < 0
 $$
+
 
 Since each $z$ can be written as $z = Ax$ for some $x \geq 0$, we can state:
 
@@ -56,11 +66,8 @@ $$
 
 Now note that each $x$ can take on the values of any of the basis vectors $e_i$, so this inequality can only hold if $A^Tc \geq 0$.
 
-So, we have reached the conclusion that exactly one of the two following results are true for a matrix $A$ and a point $b$: 
 
-**Either $b$ is in the cone of $A$'s columns or there is a strictly separating hyperplane separating passing through the origin which separates $b$ and $A$.** 
-
-In math, the following two statements are strong alternatives for any matrix A and a vector b:
+So in algebraic terms, the following two statements are strong alternatives for any matrix A and a vector b:
 
 $$
 \exists x \geq 0: Ax = b
@@ -75,7 +82,7 @@ $$
 
 ## Duality and Linear Programming
 
-This section will do three things: it will introduce the concept of linear programming, define duality, and it will show how Farkas' Lemma is a useful tool for reasoning about these concepts.
+This section will do three things: it will introduce the concept of linear programming, show how Farkas' Lemma can generate certificates of inefasibility, and derive the dual problem for a linear program.
 
 ### Linear Programming
 A linear program can be defined several ways. I was taught linear programming by Stephen Boyd. As a result, the formulation he uses in his book [Convex Optimization](https://web.stanford.edu/~boyd/cvxbook/bv_cvxbook.pdf) is the one which feels most natural to me. He defines a linear program as an optimization problem of the form:
@@ -98,7 +105,7 @@ $$
 
 where $a_i$ is the i'th row of A.
 
-A different formulation of a linear program, which I will call form 2, is:
+A different formulation of a linear program, which I will call form 2, is formulated as:
 
 $$
 max_x c^Tx
@@ -114,11 +121,11 @@ $$
 x \geq 0
 $$
 
-These two formulations are equivalent in expressability. This means that any optimization problem of the first form has an equivalent optimization problem in the second form. Showing why is a slight tangent to the main ideas of this piece, but I think it's a useful exercise, especially when trying to think about linear programs geometrically. We will show one direction of this equivalence.
+These two formulations are equivalent in expressability. This means that any optimization problem of the first form has an equivalent optimization problem in the second form and vice versa. Showing why is a slight tangent to the main ideas of this piece, but I think it's a useful exercise, especially when trying to think about linear programs geometrically. We will show one direction of this equivalence.
 
 ### Proof of Equivalence
 
-Let's assume we have an optimization problem in the first form. That is, we have some problem:
+Let's assume we have an optimization problem in form 1. That is, we have some problem:
 
 $$
 min_x c^Tx
@@ -130,7 +137,7 @@ $$
 Ax \leq b
 $$
 
-We will show that this can be written in the second form.
+We will show that this can be written in form 2.
 
 Let's first introduce slack variables. Specifically, if $Ax \leq b$, then it must be the case that $Ax + s = b$ for some non-negative vector s. So, we could define the problem as:
 
@@ -265,9 +272,9 @@ x \geq 0
 $$
 
 # Farkas' Lemma as a Certificate of Infeasibility
-Before we introduce the concept of duality, let's first notice something interesting about our second formulation. Our constraint is infeasible if b does not lie in the cone defined by the columns of A. This is trivial, as the set $\lbrace Ax \mid x \geq 0 \rbrace$ defines a cone, and our constraint explicitly says that $b$ must equal $Ax$ for some $x \geq 0$. From Farkas' lemma, we know that for any matrix A and point b, b lying in the cone of A's columns and there being a separating hyperplane between the cone and b which passes through the origin are strong alternatives. Thus, if we are able to find a vector $q$ such that $A^Tq \geq 0$ and $b^Tq < 0$, then the linear program must be infeasible, meaning no x satisfies the constraints. Once again, this is because q defines a hyperplane separating b from the cone defined by A's columns. We will refer to q as a *certificate of infeasibility*, meaning a proof that the optimization problem can't be solved.
+Before we introduce the concept of duality, let's first notice something interesting about our second formulation. Our constraint is infeasible if b does not lie in the cone defined by the columns of A. This is trivial, as the set $\lbrace Ax \mid x \geq 0 \rbrace$ defines a cone, and our constraint explicitly says that $b$ must equal $Ax$ for some $x \geq 0$. From Farkas' lemma, we know that for any matrix A and any point b, b lying in the cone of A's columns and there being a separating hyperplane between the cone and b which passes through the origin are strong alternatives. Thus, if we are able to find a vector $q$ such that $A^Tq \geq 0$ and $b^Tq < 0$, then the linear program must be infeasible, meaning no x satisfies the constraints. Once again, this is because q defines a hyperplane separating b from the cone defined by A's columns. We will refer to q as a *certificate of infeasibility*, meaning a proof that the optimization problem can't be solved.
 
-### Certificate of a Lower Bound
+## Certificate of a Lower Bound
 
 Say that we have a LP in the first form we defined:
 
@@ -296,9 +303,9 @@ c^Tx \leq t
 \end{aligned}
 $$
 
-was infeasible, then we would know that t was a lower bound on how good our solution to the original optimization problem could be. This second formulation can trivially be formulated as a LP by making c a row of A and t an element of b. Once again, if this is infeasible then there would exist some vector $q'$ which would provide us a certificate of infeasibility. This would be a certificate of a lower bound on the original LP.
+was infeasible, then we would know that t was a lower bound on how good our solution to the original optimization problem could be. Note that this can trivially be formulated as a LP by making c a row of A and t an element of b. Once again, if this is infeasible then there would exist some vector $q'$ which would provide us a certificate of infeasibility. This would be a certificate of a lower bound on the original LP.
 
-### Summary of LPs
+### Summary of LPs so Far
 At this point we have done the following: we have introduced the definition of a linear program, we've shown they can take two different forms, and we have shown that when a LP is infeasible Farkas' lemma tells us that there exists some certificate of infeasibility. This is all you must know to understand the next section.
 
 ## Duality
@@ -406,9 +413,11 @@ $$
 
 Finally, notice that for any feasible x, we have that $Ax = b$ and $x \geq 0$. Thus, 
 
-$b^Tu = (Ax)^Tu = x^TA^Tu \leq x^Tc$ 
+$$
+b^Tu = (Ax)^Tu = x^TA^Tu \leq x^Tc
+$$ 
 
-where the last ineqlaity is true since we know $A^Tu \leq c$ and the values of $x$ are all positive. This means that not only does such a u exist when there does not exist an x capable of making the objective drop below t, but it also means that any u satisfying these equations proves that no such x exists which could be feasible and have $c^Tx < t$. So, $b^Tu$ is a lower bound on how good the solution to the primal can be. It follows that the largest lower bound is the solution to the primal. Formulating the search for this largest lower bound we get:
+where the last ineqlaity is true since we know $A^Tu \leq c$ and the values of $x$ are all positive. This means that not only does such a u exist when there does not exist an x capable of making the objective drop below t, but it also means that any u satisfying these equations proves that no such feasible x exists which satisfies $c^Tx < t$. So, $b^Tu$ is a lower bound on how good the solution to the primal can be. It follows that the largest lower bound is the solution to the primal. Formulating the search for this largest lower bound we get:
 
 $$
 max_ub^Tu
@@ -422,7 +431,7 @@ $$
 
 which is simply a linear program written in the first form. This uses max instead of min, but we could simply negate b and say $min_u-b^Tu$. I leave as max since it's more informative of what the dual is accomplishing.
 
-This is the dual of the LP. This is another linear program, where solving this LP will tell us the optimal objective to the primal. In this case the vector we are optimizing over is of size $m$, the number of rows in A. In our primal the LP is optimizing over a vector equal to the number of columns in A. So, in cases where there are a few constraints and a high dimensional vector space (meaning A has few rows but many columns), the space we are searching for an optimum shrinks drastically.
+This is the dual of the LP. This is another linear program, where solving this LP will tell us the optimal objective to the primal. In this case the vector we are optimizing over is of size $m$, the number of rows in A. In our primal the LP is optimizing over a vector equal to the number of columns in A. So, in cases where there are a few constraints and a high dimensional vector space (meaning A has few rows but many columns), the space we are searching over shrinks drastically.
 
 ## Concluding Thoughts
 

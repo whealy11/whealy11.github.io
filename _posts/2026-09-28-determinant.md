@@ -1,19 +1,19 @@
 ---
 layout: default
-title: "A Holistic Overview of the Determinant"
+title: "A Holistic View of the Determinant"
 description: "This does a deep dive into the definition and properties of the determinant of a matrix. It aims to connect the determinant to m-linear functions, eigenvalues, and singular values, as well as provide geometric intuition for why these properties make sense."
 category: technical
 image: /assets/images/determinant.jpg
 ---
 
-# A Holistic Overview of the Determinant
+# A Holistic View of the Determinant
 
 **Will Healy**
 *September 2026*
 
 ## Motivation
 
-I wanted to write this essay because I think building an understanding of the determinant is so easy to skip when learning linear algebra. It is easy to skip because most elementary usecases of these concepts don't really require a deep understanding of its meaning. I skipped taking time to understand the determinant when I first learned linear algebra. I didn't think it was that important. When I started studying higher level math and ML, though, my lack of understanding was shoved in my face. For example I was very humbled when I was expected to quickly understand why $log(det(X))$ was a convex function in a class full of PhDs. I realized I could barely define what the determinant really was. I then spent a lot of time trying to understand what the determinant really represents. I hope to share the intuitions I've built for this. I hope to do this in a way which is very clear and accessible, and bridges both the algebraic and geometric interpretations.
+I wanted to write this essay because I think building an understanding of the determinant is so easy to skip when learning linear algebra. It is easy to skip because most elementary usecases of these concepts don't really require a deep understanding of its meaning. I skipped taking time to understand the determinant when I first learned linear algebra. I didn't think it was that important. When I started studying higher level math and ML, though, my lack of understanding was shoved in my face. For example I was very humbled when I was expected to quickly understand why $log(Det(X))$ was a convex function in a class full of PhDs. I realized I could barely define what the determinant really was. I then invested considerable time into understanding the determinant. I hope to share the intuitions I've built along the way. I also hope to present these in a way which is very clear and accessible, and bridges both the algebraic and geometric interpretations.
 
 ## Multi-Dimensional Measures of Size
 
