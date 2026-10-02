@@ -247,7 +247,7 @@ g & h & i
 \end{bmatrix}
 $$
 
-We can apply each of the permutations. Recall, in each of the permutations the index of the permutation represents the row and the value of the permutation represents the column. So, the permutation [1, 3, 2] represents $afh$, since for the first column we use the first row, for the second column we use the third row, and for the third column we use the second row.
+We can apply each of the permutations. Recall, in each of the permutations the index of the element in the permutation represents the column and the value of the element in the permutation represents the row. So, the permutation [1, 3, 2] represents $afh$, since for the first column we use the first row, for the second column we use the third row, and for the third column we use the second row.
 
 Expanding this out with the relevant signs we get:
 
