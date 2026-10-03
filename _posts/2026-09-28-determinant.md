@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "A Holistic View of the Determinant"
-description: "This does a deep dive into the definition and properties of the determinant of a matrix. It aims to connect the determinant to m-linear functions, eigenvalues, and singular values, as well as provide geometric intuition for why these properties make sense."
+description: "This does a deep dive into the definition and properties of the determinant. It aims to connect the determinant to m-linear functions, eigenvalues, and singular values, as well as provide geometric intuition for why these properties make sense."
 category: technical
 image: /assets/images/determinant/thumbnail.jpg
 ---

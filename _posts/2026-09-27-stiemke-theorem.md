@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Geometric Intuition for Risk Neutral Pricing"
-description: "The purpose of this essay is to understand risk neutral pricing geometrically. I first introduce a linear algebra result called Stiemke's theorem. I then show this theorem's relationship to the existence risk neutral pricing."
+description: "The purpose of this essay is to understand risk neutral pricing geometrically. This is done using a linear algebra result called Stiemke's theorem. This result is first motivated geometrically, then proven, then connected to the existence of risk neutral prices under no arbitrage assumptions."
 category: technical
 image: /assets/images/stiemke-theorem/thumbnail.jpg
 ---
