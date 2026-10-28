@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Linear Attention From Scratch
+title: Linear Attention from First Principles
 description: This builds all the theory required to understand linear attention from first principles. It requires no prerequisite knowledge of kernels.
 category: technical
 image: /assets/images/linear-attention/thumbnail.jpg
 ---
 
-# Linear Attention from first principles
+# Linear Attention from First Principles
 
 **Will Healy**
 *September 2026*

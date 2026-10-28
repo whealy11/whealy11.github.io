@@ -38,7 +38,7 @@ Replacing $\leq$ with $<$, $>$, or $\geq$ also yield valid halfspaces.
 ## Introduction
 The Gordan Stiemke theorem describes a geometrically simple yet extremely powerful result in linear algebra. It states that for any subspace whose intersection with the non-negative orthant consists of only the origin, there exists a vector $y$ strictly inside the non-negative orthant which is orthogonal to the subspace. 
 
-This piece is going to do three things. First, it's going to make the claim this theorem is making very intuitive geometrically. Then, it is going to prove the theorem algebraically. Finally, once the theory is hopefully understood very well, it is going to use it to prove the existence of risk neutral pricing in a no-arbitrage setting. For many readers I think the geometric intuitions will be sufficient to convince them that the theorem is true. However, I encourage readers to understand of the algebraic proof. Without understanding the more rigorous proof, it will be difficult to recongize algebraic patterns where this theorem may be applicable.
+This piece is going to do three things. First, it's going to make the claim this theorem is making very intuitive geometrically. Then, it is going to prove the theorem. Finally, once the theory is hopefully understood very well, it is going to use it to prove the existence of risk neutral pricing in a no-arbitrage setting. For many readers I think the geometric intuitions will be sufficient to convince them that the theorem is true. However, I encourage readers to understand of the algebraic proof. Without understanding the more rigorous proof, it will be difficult to recongize algebraic patterns where this theorem may be applicable.
 
 ### Geometric Intuition on Stiemke's Theorem
 
@@ -126,7 +126,7 @@ Now let's consider the elements of $c$. I claim that they must all be strictly p
 ### Proof of $c > 0$
 
 
-First realize that since ${0} \in Im(A)$, the separating hyperplane must be defined by a $k > 0$. Otherwise the hyperplane would go through the origin and it would not be the case that $z^Tc - k < 0$ like is required for $z = {0}$. Additionally, since all the standard bases $e_1, e_2, ... e_m$ lie inside the unit simplex, it must be the case that $e_iTc - k > 0$. Since $k > 0$, we have that:
+First realize that since ${0} \in Im(A)$, the separating hyperplane must be defined by a $k > 0$. Otherwise the hyperplane would go through the origin and it would not be the case that $z^Tc - k < 0$ like is required for $z = {0}$. Additionally, since all the standard bases $e_1, e_2, ... e_m$ lie inside the unit simplex, it must be the case that $e_i^Tc - k > 0$. Since $k > 0$, we have that:
 
 $$
 \forall i: c_i = e_i^Tc > e_i^Tc - k > 0
@@ -250,7 +250,7 @@ $$
 
 This means that the values of $q$ are all positive and sum to 1, making $q$ a probability distribution. So, these assets are all priced risk neutrally according to the probability vector $q$, where $q_j$ is the probability of ending up in state j.
 
-This shows the following set of strong alternatives:
+This shows the following pair of strong alternatives:
 
 Either there is an arbitrage opportunity
 
@@ -276,3 +276,6 @@ If you remember one thing from this remember the following:
 
 I find this incredibly interesting. If anyone ever reads this I hope that they do too.
 
+## Relationship to Farkas' Lemma
+
+This showed the existence of risk neutral pricing using a linear algebra result focused on the column space of our payoff matrix. The same result can be shown in row space using a closely related theorem called Farkas' lemma. I've written a different piece on Farkas' lemma [here](/writing/farkas-lemma/) which uses it to derive the dual problem for a linear program. However, by considering the cone defined by the rows of our payoff matrix this can also be used to prove the result we showed above.
