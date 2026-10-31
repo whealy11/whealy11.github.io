@@ -383,19 +383,41 @@ $$
 g(t) = \prod_i^{|X|}(t - x_i)
 $$
 
-can be written in terms of $ p_1, p_2, ... p_{\|X\|} $. To do this we will first consider the derivative of the logarithm of $g(t)$. The derivative of the logarithm of a function $g$ is equal to the derivative of $g$ divided by $g$. That is, 
+can be written in terms of $ p_1, p_2, ... p_{\|X\|} $. 
+
+At a high level, we are going to do this by writing the coefficients of $g(t)$ in terms of the power sums $p_1, ... p_{\|X\|}$. The way we will get there is by deriving two different expressions for the derivative of $g(t)$. One formulation will contain only the coefficients of $g(t)$, which we denote $e_1, ... e_{\|X\|}$, and the other will contain the power sum terms and coefficients. By equating these two formulations, we will see that we can write each coefficeint $e_i$ in terms of only the power sum terms.
+
+*First Formulation of g'(t)*
+
+As you hopefully know if you're reading this, terms of the form $ax^b$ are very easy to differentiate. Their derivative is simply $abx^{b-1}. Since $g$ is a polynomial of degree $\|X\|$, we can write $g$ as:
+
+$$
+g(t) = t^{|X|} + e_1 t^{|X|-1} + e_2t^{|X|-2} + ... e_{|X|}
+$$
+
+and $g'$ as:
+
+$$
+g'(t) = (|X|)t^{|X| - 1} + (|X|-1)e_1 t^{|X|-2} + (|X| - 2)e_2t^{|X|-3} + ... e_{|X|-1}
+$$
+
+We will call this formulation 1.
+
+*Second Formulation of g'(t)*
+
+To create the second formulation we will first consider the derivative of the logarithm of $g(t)$. The derivative of the logarithm of a function $g$ is equal to the derivative of $g$ divided by $g$. That is, 
 
 $$
 \frac{dlog(g(x))}{dx} = \frac{g'(t)}{g(t)}
 $$
 
-Recall the product rule from calculus, which states that the derivative of a product of terms is equal to the sum of the derivative of each term times the remaining terms. So, since the derivative of $t - x_j$ with respect to $t$ is just 1, the derivative of this product is simply the sum over all products of unique $\|X\| - 1$ elements:
+Recall the product rule from calculus, which states that the derivative of a product of terms is equal to the sum of the derivative of each term times the remaining terms over each term. So, since the derivative of $t - x_j$ with respect to $t$ is just 1, the derivative of this product is simply the sum over all products of unique $\|X\| - 1$ elements:
 
 $$
 g'(t) = \sum_i^{|X|}\frac{d(t - x_i)}{dt}\prod_{j\neq i}^{|X|} (t - x_j) = \sum_i^{|X|}\prod_{j\neq i}^{|X|} (t - x_j)
 $$
 
-To get our desired term $\frac{g'(t)}{g(t)}$, we can divide both sides by 
+To get our desired log derivative term $\frac{g'(t)}{g(t)}$, we can divide both sides by:
 
 $$
 g(t) =  \prod_{j}^{|X|} (t - x_j)
@@ -412,7 +434,7 @@ $$
 
 
 
-We're now going to invoke another property of polynomials, which is that if you observe any n + 1 points of an n-degree polynomial, these values uniquely define the polynomal. Thus if you observe infinite points of any polynomial this will uniquely define the polynomial. Since there are infinite points of the polynomial $g(t)$ where $t > max_i(\|x_i\|)$, we can concern ourself only with the region of the polynomial where $t > max_i(\|x_i\|)$ without losing information about the polynomial.
+We're now going to invoke another property of polynomials, which is that if you observe any n + 1 points of an n-degree polynomial, these values uniquely define the polynomal. This falls out naturally be being able to define a system of linear equations with $n$ equations and $n$ unknowns. Thus if you observe infinite points of any polynomial this will uniquely define the polynomial. Since there are infinite points of the polynomial $g(t)$ where $t > max_i(\|x_i\|)$, we can concern ourself with only the region of the polynomial where $t > max_i(\|x_i\|)$ without losing information about the polynomial.
 
 By restricting our domain to this region where $t > max_i(\|x_i\|)$, we can apply a clever trick to write this in terms of a geometric series. If we factor out the term $\frac{1}{t}$ from this we can write:
 
@@ -460,19 +482,8 @@ $$
 
 When $t > max_i(x_i)$.
 
-Let's stop here and think about what this means...
+Let's stop here and think about what this means... Will[TODO]
 
-Now we will consider another formulation of $g'(t)$ . Since $g$ is a polynomial of degree $\|X\|$, we can write $g$ as:
-
-$$
-g(t) = t^{|X|} + e_1 t^{|X|-1} + e_2t^{|X|-2} + ... e_{|X|}
-$$
-
-and $g'$ as:
-
-$$
-g'(t) = (|X|)t^{|X| - 1} + (|X|-1)e_1 t^{|X|-2} + (|X| - 2)e_2t^{|X|-3} + ... e_{|X|-1}
-$$
 
 Now recall our original formulation of $g'(t)$:
 
