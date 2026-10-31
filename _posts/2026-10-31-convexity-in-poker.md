@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Optimal Betting Frequencies Through the Lense of Convexity"
-description: "This aims to connect concepts from poker theory to convexity, explicitly solving certain toy examples using simple linear programs. P.S, I host a private $5/$10/(strongly encouraged $20 straddle) game in Manhattan. If you're intrested in playing please email me. Pros are welcome as long as they are good vibes :)"
+description: "This aims to connect concepts from poker theory to convexity, explicitly solving certain toy examples using simple linear programs. P.S. I host a private $5/$10/(strongly encouraged $20 straddle) game in Manhattan. If you're intrested in playing please email me. Pros are welcome as long as they are good vibes :)"
 category: technical
 image: /assets/images/convexity-in-poker/thumbnail.jpg
 permalink: /writing/convexity-in-poker/
