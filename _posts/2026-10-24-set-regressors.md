@@ -333,13 +333,13 @@ p_2 = x_1^2 + x_2^2
 \end{aligned}
 $$
 
-The $-tx_1 - tx_2$ term is simple to write in terms of $p$. It's just:
+Let's start with the $-tx_1 - tx_2$ term. This is simple to write in terms of $p$. It's just:
 
 $$
 -tx_1 - tx_2 = -tp_1
 $$
 
-To see how we can write the $x_1x_2$ term in terms of $p$, we can first consider the term $p_1^2$:
+To write the $x_1x_2$ term in terms of $p$, we can first consider the term $p_1^2$:
 
 $$
 \begin{aligned}
@@ -375,7 +375,7 @@ $$
 
 #### Proof for arbitrary $|X|$.
 
-We will now prove this for arbitrary sized sets $X$. This is the heart of the mathematical result proved by the [Deep Sets](https://arxiv.org/pdf/1703.06114) paper. Let's first understand a concept called Newton's identities.
+We will now prove this for arbitrary sized sets $X$. This is essentially a proof of a result called Newtons Identities, which relates the power sums of elements to the polynomial defined by roots at these elements. This is the heart of the mathematical result proved by the [Deep Sets](https://arxiv.org/pdf/1703.06114) paper.
 
 We will take the same approach with this proof. That is, we are trying to show that:
 
@@ -383,15 +383,19 @@ $$
 g(t) = \prod_i^{|X|}(t - x_i)
 $$
 
-can be written in terms of $ p_1, p_2, ... p_{\|X\|} $. To do this we will first consider the derivative of the logarithm of $g(t)$. The derivative of the logarithm of a function $g$ is equal to the derivative of $g$ divided by $g$. That is, $\frac{g'(t)}{g(t)}$.
-
-Recall that by the product rule if you're differentiating a product of elements, you can take the derivative of each element and multiply it by the remaining elements, then sum this result over all elements to get the derivative of the product. So, since the derivative of $t - x_j$ with respect to $t$ is just 1, the derivative of this product is simply the sum over all products of unique $\|X\| - 1$ elements:
+can be written in terms of $ p_1, p_2, ... p_{\|X\|} $. To do this we will first consider the derivative of the logarithm of $g(t)$. The derivative of the logarithm of a function $g$ is equal to the derivative of $g$ divided by $g$. That is, 
 
 $$
-g'(t) = \sum_i^{|X|}\prod_{j\neq i}^{|X|} (t - x_j)
+\frac{dlog(g(x))}{dx} = \frac{g'(t)}{g(t)}
 $$
 
-to get our desired term $\frac{g'(t)}{g(t)}$, we can divide both sides by 
+Recall the product rule from calculus, which states that the derivative of a product of terms is equal to the sum of the derivative of each term times the remaining terms. So, since the derivative of $t - x_j$ with respect to $t$ is just 1, the derivative of this product is simply the sum over all products of unique $\|X\| - 1$ elements:
+
+$$
+g'(t) = \sum_i^{|X|}\frac{d(t - x_i)}{dt}\prod_{j\neq i}^{|X|} (t - x_j) = \sum_i^{|X|}\prod_{j\neq i}^{|X|} (t - x_j)
+$$
+
+To get our desired term $\frac{g'(t)}{g(t)}$, we can divide both sides by 
 
 $$
 g(t) =  \prod_{j}^{|X|} (t - x_j)
@@ -406,20 +410,22 @@ $$
 \end{aligned}
 $$
 
-We're now going to apply a clever trick which exploits properties of geometric series. If we factor out the term $\frac{1}{t}$ from this we can write:
+
+
+We're now going to invoke another property of polynomials, which is that if you observe any n + 1 points of an n-degree polynomial, these values uniquely define the polynomal. Thus if you observe infinite points of any polynomial this will uniquely define the polynomial. Since there are infinite points of the polynomial $g(t)$ where $t > max_i(\|x_i\|)$, we can concern ourself only with the region of the polynomial where $t > max_i(\|x_i\|)$ without losing information about the polynomial.
+
+By restricting our domain to this region where $t > max_i(\|x_i\|)$, we can apply a clever trick to write this in terms of a geometric series. If we factor out the term $\frac{1}{t}$ from this we can write:
 
 $$
 \frac{g'(t)}{g(t)} = \frac{1}{t} \sum_i^{|X|} \frac{1}{1 - \frac{x_i}{t}}
 $$
 
-We're now going to invoke another property of polynomials, which is that if you observe any n + 1 points of an n-degree polynomial, these values uniquely define the polynomal. Thus if you observe infinite points of any polynomial this will uniquely define the polynomial. Since there are infinite points of the polynomial $g(t)$ where $t > max_i(\|x_i\|)$, we can concern ourself only with the region of the polynomial where $t > max_i(\|x_i\|)$ without losing information about the polynomial.
-
 In this region where $t > max_i(\|x_i\|)$, it's the case that the term $\frac{x_i}{t}$ has an absolute value less than 1.
 
-Now note that a geometric series over $|z| < 1$ it's the case that:
+And by the definition of a geometric series it's the case that for any $|z| < 1$:
 
 $$
-\sum_{i=0}^{\infty} z^i = \frac{1}{1-z}
+\frac{1}{1-z} = \sum_{i=0}^{\infty} z^i
 $$
 
 Thus by considering the region where $t > max_i(\|x_i\|)$ we have it that:
