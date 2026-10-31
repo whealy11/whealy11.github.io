@@ -616,7 +616,7 @@ One caveat here is that $\phi$ must know $\|X\|$, and thus this proof only works
 Our proof through newtons identiries also assumed that the elements of our universe were real numbers. This was explicitly assumed by defining terms like $x_i^2$ which don't make sense if $x_i$ is a vector. Again, this isn't actually necesasry for the result to hold, but it complicates the proof. The concepts powering Newton's identities would extend to the injectivity of a set of vectors of the form [x, y], it's just that the power sums would have to be constructed through monomials like:
 
 $$
-\phi(x, y) = [d, y, xy, x^2, y^2, ...]
+\phi(x, y) = [x, y, xy, x^2, y^2, ...]
 $$
 
 This still works in both theory and practice.
@@ -629,14 +629,14 @@ $$
 f(X)_i = \rho(x_i, \sum_{x_{j \neq i} \in X}\phi(x_j, x_i))
 $$
 
-This means that if the output dimension is the same as the input dimension then we can assign a special treatment to the value at index $i$ of the input when generating index $i$ of the output while maintaining permutation equivariance.
+This means that if the output dimension is the same as the input dimension, then we can assign special treatment to the value at index $i$ of the input when generating index $i$ of the output. Doing this still maintains a permutation equivariance guarantee.
 
 ## Deep Sets Architecture
 
 
 The Deep Sets paper doesn't fix the structure of $\phi$ or $\rho$ but instead lets the user specify these functions. They do introduce some architectures which they experimented with, though.
 
-The simplest of their architectures simply plugs in multi-layer-perceptrons (MLPs) for both $\phi$ and $\rho$.
+The simplest of their architectures simply plugs in multilayer perceptrons (MLPs) for both $\phi$ and $\rho$.
 
 Their more complex architectures involve stacking equivariant layers of the form:
 
