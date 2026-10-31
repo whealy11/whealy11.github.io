@@ -495,19 +495,29 @@ g'(t) &= g(t)(\frac{|X|}{t} + \frac{p_1}{t^2} + \frac{p_2}{t^3} + \frac{p_3}{t^4
 \end{aligned}
 $$
 
-*note that the first formulation is on the third line and the second formulation is on the first and second lines.*
+The first formulation is on the third line and the second formulation is on the first and second lines.
+
 Now let's look at the last line. If we can recover the $e_i$ terms using only $p$ terms then we have not lost any information. 
 
-Let's think about the $e_1$ term in the third line. In the derivative, this is associated with the term:
+Consider the $e_1$ term in the third line. In the derivative, this is associated with the term:
 
 $$
 (|X|-1)e_1t^{|X|-2}
 $$
 
-Looking at the product in line 2, the only way which we could get a term with $t^{\|X\|-2}$ is by multiplying the $t^{\|X\|}$ term with the $\frac{p_1}{t^2}$ term or by multiplying the $e_1t^{\|X\| - 1}$ term with the $\frac{\|X\|}{t}$ term. Thus, we can write:
+Looking at the product in line 2, the only two wsay which we could get a term with $t^{\|X\|-2}$ are with the following two products:
 
 $$
-(|X|-1)e_1 = p_1 + e_1|X|
+\begin{aligned}
+t^{\|X\|}*\frac{\textcolor{red}{p_1}}{t^2} \\
+\textcolor{red}{e_1} t^{\|X\| - 1}*\frac{\textcolor{red}{\|X\|}}{t}
+\end{aligned}
+$$
+
+Thus, we can write:
+
+$$
+(|X|-1)e_1 = \textcolor{red}{p_1} + \textcolor{red}{e_1|X|}
 $$
 
 which yields:
@@ -528,26 +538,26 @@ $$
 t^{|X|-3}
 $$
 
-terms by the product on line 2 are by:
+terms by the product on line 2 are from:
 
 $$
 \begin{align}
-t^{|X|}\frac{p_2}{t^3} \\
-e_1t^{|X|-1}\frac{p_1}{t_2} \\
-e_2t^{|X|-2}\frac{|X|}{t}
+t^{|X|}\frac{\textcolor{red}{p_2}}{t^3} \\
+\textcolor{red}{e_1}t^{|X|-1}\frac{\textcolor{red}{p_1}}{t_2} \\
+\textcolor{red}{e_2}t^{|X|-2}\frac{\textcolor{red}{|X|}}{t}
 \end{align}
 $$
 
 Thus, the value for $(\|X\| - 2)e_2t^{\|X\|-3}$ must be the sum of these:
 
 $$
-(|X| - 2)e_2t^{|X|-3} = t^{|X|}\frac{p_2}{t^3} + e_1t^{|X|-1}\frac{p_1}{t_2} + e_2t^{|X|-2}\frac{|X|}{t}
+(|X| - 2)e_2t^{|X|-3} = t^{|X|}\frac{\textcolor{red}{p_2}}{t^3} + \textcolor{red}{e_1}t^{|X|-1}\frac{\textcolor{red}{p_1}}{t_2} + \textcolor{red}{e_2}t^{|X|-2}\frac{\textcolor{red}{|X|}}{t}
 $$
 
-dividing everything by $t^{\|X\|-3}$:
+Dividing everything by $t^{\|X\|-3}$:
 
 $$
-(|X| - 2)e_2 = p_2 + e_1p_1 + e_2|X|
+(|X| - 2)e_2 = \textcolor{red}{p_2} + \textcolor{red}{e_1p_1} + \textcolor{red}{e_2|X|}
 $$
 
 And so:
@@ -571,7 +581,7 @@ $$
 |X|e_k - ke_k= |X|e_k + \sum_{i=1}^k p_ie_{k-i}
 $$
 
-Subtracting $\|X\|e_k$ both sides:
+Subtracting $\|X\|e_k$ from both sides:
 
 $$
 - ke_k = \sum_{i=1}^k p_ie_{k-i}
@@ -589,10 +599,69 @@ $$
 X \to [p_1, p_2, ... p_{|X|}]
 $$
 
-is injective. So we are done! To summarize this proof, we have done the following. We have proposed a candidate function $\phi(x) = [x, x^2, x_3, ... x_{\|X\|}]$ such that:
+is injective.
+
+To summarize this proof, we have done the following. We have proposed a candidate function $\phi(x) = [x, x^2, x_3, ... x_{\|X\|}]$ such that:
 
 $$
 E(X) = \sum_{i=1}^{|X|}\phi(x_i)
 $$
 
-is injective. One caveat here is that $\phi$ must know $\|X\|$, and thus this only works when the number of elements in the set is fixed.
+is injective.
+
+#### Two Assumptions Made
+
+One caveat here is that $\phi$ must know $\|X\|$, and thus this proof only works when the number of elements in the set is fixed. However, the broader expressability result still holds when we have only an upper bound on $\|X\|$. This was proven two years after the Deep Sets paper came out in a paper called [On the Limitations of Representing Functions on Sets]("https://proceedings.mlr.press/v97/wagstaff19a/wagstaff19a.pdf).
+
+Our proof through newtons identiries also assumed that the elements of our universe were real numbers. This was explicitly assumed by defining terms like $x_i^2$ which don't make sense if $x_i$ is a vector. Again, this isn't actually necesasry for the result to hold, but it complicates the proof. The concepts powering Newton's identities would extend to the injectivity of a set of vectors of the form [x, y], it's just that the power sums would have to be constructed through monomials like:
+
+$$
+\phi(x, y) = [d, y, xy, x^2, y^2, ...]
+$$
+
+This still works in both theory and practice.
+
+### Equivariant Layer Extension
+
+The Deep Sets paper also discusses permutation equivariant layers. That is, for layers which go from $R^n \to R^n$, you can define an equivariant function:
+
+$$
+f(X)_i = \rho(x_i, \sum_{x_{j \neq i} \in X}\phi(x_j, x_i))
+$$
+
+This means that if the output dimension is the same as the input dimension then we can assign a special treatment to the value at index $i$ of the input when generating index $i$ of the output while maintaining permutation equivariance.
+
+## Deep Sets Architecture
+
+
+The Deep Sets paper doesn't fix the structure of $\phi$ or $\rho$ but instead lets the user specify these functions. They do introduce some architectures which they experimented with, though.
+
+The simplest of their architectures simply plugs in multi-layer-perceptrons (MLPs) for both $\phi$ and $\rho$.
+
+Their more complex architectures involve stacking equivariant layers of the form:
+
+$$
+h_i' = \sigma(Wh_i + Upool_jh_j + b)
+$$
+
+Where pooling is an arbitrary invariant function over the $h_j$ terms.
+
+## A Few Tasks Tested
+
+There are a few interesting tasks which the Deep Sets paper tested their approch on. On all of these their approach performed well.
+
+1. Estimate parameters of a gaussina distribution from varying sized samples from that distribution.
+
+2. Given a varying amount of points uniformly sampled from the inside of some object in space, classify the object.
+
+3. Given a set of numbers, calculate their sum. This is only interesting because it performed well when being trained on small sets and tested on large sets.
+
+## Conclusion
+
+This essay introduce the concept of set regressors and summarized the Deep Sets paper. The summary's primary result was on the expressability of functions of the form:
+
+$$
+\rho(\sum_{x_i \in X} \phi(x_i))
+$$
+
+We showed that this could express continuous permutation invariant functions of fixed-cardinality sets over a real valued universe. We didn't prove it rigorously, but we also motivated how one could prove that this applies to a universe of vectors as well as real numbers. We then discussed some architectural thoughts presented by the authors of this paper and listed a few tasks which they tested their architecture on. I find this topic very interesting, I hope any readers do as well. As always, feel free to reach out with questions or flag any mistakes I've made at healy.ws1@gmail.com.
