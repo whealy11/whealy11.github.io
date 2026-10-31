@@ -7,7 +7,7 @@ image: /assets/images/convexity-in-poker/thumbnail.jpg
 permalink: /writing/convexity-in-poker/
 ---
 
-# Set Regressors Theory Deep Dive
+# Optimal Betting Frequencies Through the Lense of Convexity
 
 **Will Healy**
 
