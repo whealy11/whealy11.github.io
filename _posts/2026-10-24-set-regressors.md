@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Set Regressors Theory Deep Dive"
-description: "This does a deep dive into the theory behind set regressors, specifically citing the [Deep Sets](https://arxiv.org/pdf/1703.06114) paper. It first introduces the broad concepts of set regressors, rigorously proves a theorem which makes them possible, and then introduces the technices and results behind the paper."
+description: "This does a deep dive into the theory behind the expressability of set regressors, proving several results introduced by the [Deep Sets](https://arxiv.org/pdf/1703.06114) paper. It first introduces the broad concepts of set regressors, rigorously proves a theorem which makes them perfmrom, and then does a brief overview of the architectures and applications of these techniques."
 category: technical
 image: /assets/images/set-regressors/thumbnail.jpg
 ---
@@ -16,7 +16,7 @@ Set regressors are an interesting concept. Philosophically, they are very simple
 
 Set regressions pop up in several corners of machine learning. Typically they are used as a small component in a larger system, though, and thus the theory behind them is easily overlooked. This is why I wanted to write this: to prove rigorously why these techniques are theoretically sound and also explain intuitively how they can be so effective despite the disorderedness of their domain.
 
-I was first introduced to these ideas in a class taught by Jure Leskovec, a prominent ML researches whose work focuses on machine learning with graphs. Set regressors appear in graph ML when embedding a node in a graph. The learned embedding of a node typically comes from several iterations of embedding features of the node of interest, aggregating this embedding with the embeddings of neighboring nodes, and repeating this process to get a positionally aware embedding of a node.
+I was first introduced to these ideas in a class taught by Jure Leskovec, a prominent ML researcher whose work focuses on machine learning with graphs. Set regressors appear in graph ML when embedding a node in a graph. The learned embedding of a node typically comes from several iterations of embedding features of the node of interest, aggregating this embedding with the embeddings of neighboring nodes, and repeating this process to get a positionally aware embedding of a node.
 
 I've also used these techniques in industry. My application came from needing to look at data from a classification model and determine how much more data was necssary to have certain guarantees over our performance. The classification models could be for any number of classes, and thus the model we learned needed to take as input class distributions from data with a varying numbers of classes. This is simply a set. We tried several methods for doing this. Most methods did not involve using set regressor techniques and instead derived metrics from the distribution and jammed them into a fixed length vector. However, the set regressor worked the best.
 
@@ -92,12 +92,12 @@ $$
 
 where the product of two vectors is their elementwise product.
 
-The first approach is the method used by the deep sets architecture. As we will show below, $\rho$ and $\phi$ can be chosen to express every single permutation invariant function for countable universes, and every single continuous permutation invariant function for uncountable universes. This result is the primary contribution of the deep sets paper.
+The first approach is the method used by the deep sets architecture. As we will show below, $\rho$ and $\phi$ can be chosen to express every single permutation invariant function over continuous real inputs. This result is the primary contribution of the deep sets paper.
 
 
 ## Primary Result of Deep Sets
 
-Any continuous permutation invariant function $f$ can be written as:
+Any permutation invariant function $f$ over a continuous universe can be written as:
 
 $$
 f(x) = \rho(\sum_i \phi(x_i))
@@ -609,6 +609,7 @@ $$
 
 is injective.
 
+
 #### Two Assumptions Made
 
 One caveat here is that $\phi$ must know $\|X\|$, and thus this proof only works when the number of elements in the set is fixed. However, the broader expressability result still holds when we have only an upper bound on $\|X\|$. This was proven two years after the Deep Sets paper came out in a paper called [On the Limitations of Representing Functions on Sets]("https://proceedings.mlr.press/v97/wagstaff19a/wagstaff19a.pdf).
@@ -664,4 +665,8 @@ $$
 \rho(\sum_{x_i \in X} \phi(x_i))
 $$
 
-We showed that this could express continuous permutation invariant functions of fixed-cardinality sets over a real valued universe. We didn't prove it rigorously, but we also motivated how one could prove that this applies to a universe of vectors as well as real numbers. We then discussed some architectural thoughts presented by the authors of this paper and listed a few tasks which they tested their architecture on. I find this topic very interesting, I hope any readers do as well. As always, feel free to reach out with questions or flag any mistakes I've made at healy.ws1@gmail.com.
+We showed that this could express permutation invariant functions of fixed-cardinality sets over a real valued universe. We didn't prove it rigorously, but we also motivated how one could prove that this applies to a universe of vectors as well as real numbers. We then discussed some architectural thoughts presented by the authors of this paper and listed a few tasks which they tested their architecture on.
+
+There's more to say on this subject. I abstained from proving a stronger result introduced by Deep Sets, which is that for a continuous permutation invariant function $f$, we can represent it using continuous $\rho$ and $\phi$. This is arguably a more practical result since in practice the functions we plug in for $\rho$ and $\phi$ will be continuous. I may write a follow up post on this, but it requires some topological prerequisites that I thought may taint this post.
+
+I find set regressors very interesting, I hope any readers now do as well. As always, feel free to reach out with questions or flag any mistakes I've made at healy.ws1@gmail.com.
