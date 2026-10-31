@@ -137,12 +137,24 @@ $$
 We want to show that $f$ can be expressed as:
 
 $$
-\forall X \in \mathcal{P}(U): f(x) = \rho (\sum_i \phi(x_i))
+\forall X \in \mathcal{P}(U): f(X) = \rho (\sum_i \phi(x_i))
 $$
 
-If $f$ is injective, then in order for this to work it needs to be the case that $(\sum_i \phi(x_i))$ is also injective. That is, by summing the $\phi(x_i)$ terms we don't lose information. If this is the case, since the universe is finite we can simply define $\rho$ to be a mapping from each of these sums to it's corresponding value $f(X)$.
+Let's think about the requirements of $\phi$ and $\rho$ to make that happen. If $f$ is injective, then in order for this to work it needs to be the case that $(\sum_i \phi(x_i))$ is also injective. That is, by summing the $\phi(x_i)$ terms we don't lose information. If this was not the case, then for some two subsets $X_1$ and $X_2$ it would be the caset that:
 
-In the finite case, we can achieve a lossless aggregation of the elements by defining $\phi(x) = 2^{-N(x)}$. For example if we consider the set {1, 4, 5}, we would have that:
+$$
+\sum_{x_{1i} \in |X_1}\phi(x_{1i}) = \sum_{x_{2i} \in |X_2}\phi(x_{2i})
+$$
+
+and thus:
+
+$$
+\rho(\sum_{x_{1i} \in |X_1}\phi(x_{1i})) = \rho(\sum_{x_{2i} \in |X_2}\phi(x_{2i}))
+$$
+
+But since we know $f$ is injective this must be wrong. So, $(\sum_i \phi(x_i))$ must be injective. If $(\sum_i \phi(x_i))$ is injective, since the universe is finite we can simply define $\rho$ to be a mapping from each of these sums to it's corresponding value $f(X)$.
+
+In the finite case, we can achieve an injective $(\sum_i \phi(x_i))$ aggregation of the elements by defining $\phi(x) = 2^{-N(x)}$. For example if we consider the set {1, 4, 5}, we would have that:
 
 $$
 \sum_i \phi(x_i) = \sum_i 2^{-N(x_i)} = \frac{1}{2} + \frac{1}{16} + \frac{1}{32}
