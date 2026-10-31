@@ -121,14 +121,14 @@ We will now prove the existence of a $\phi$ and $\rho$ for all permutation invar
 
 ### Countable Case
 
-A set that is countable is one who's values can all be assigned a natural number. All finite sets are countable. Some infinite sets are countable. The set of natural numbers is obviously a countable set. The set of all real numbers is not countable, since for every natural number there are infinitely many real numbers.
+A set that is countable is one who's values can all be assigned a natural number. All finite sets are countable. Some infinite sets are countable. The set of natural numbers is obviously a countable set since each element can be assigned to itself. The set of all real numbers is not countable, since for every natural number there are infinitely many real numbers.
 
 
 #### Finite Countable Case
 
 Imagine a finite universe of elements $U$. Since the universe is finite, and thus countable, we can give an arbitratry assignment of each element to a natural number. Let's let $N(u)$ be the natural number we assign to the element $u \in U$. To give an example of this we can consider the universe of elements: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}. Since each element is already a natural number we can assign each number to itself. So, $N(u) = u$.
 
-For a given universe, a function over this universe is responsible for mapping all subsets of this universe to an associated value. If $f$ is a function over this universe, then for each $X \in \mathcal{P}(U)$, a function $f$ over this universe maps $x$ to an associated value $f(X)$. Here $\mathcal{P}(U)$ is the power set of $U$ and is defined as:
+If $f$ is a function over this universe, then for each $X \in \mathcal{P}(U)$, a function $f$ must map $X$ to an associated value $f(X)$. Here $\mathcal{P}(U)$ is the power set of $U$ and is defined as:
 
 $$
 \mathcal{P}(U) = \{X | X \subseteq U \}
