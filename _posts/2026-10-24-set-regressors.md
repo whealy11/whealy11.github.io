@@ -9,7 +9,6 @@ image: /assets/images/set-regressors/thumbnail.jpg
 # Set Regressors Theory Deep Dive
 
 **Will Healy**
-*September 2026*
 
 ## Introduction
 Set regressors are an interesting concept. Philosophically, they are very simple. They are learnable functions which take a set as an input and output a continuous value. But if you consider the methods which are used to regress a continuous value against a traditional input, i.e a vector, you'll notice that they rely on the input having both a consistent ordering and fixed number of features. Sets have neither of these properties. It's interesting to try, and fail, to visualize the set of all subsets of some universe. They don't live in a nice visualizable space the way vectors in a vector space do. Thus, the techniques to map this domain onto a continuous range in an intelligent way must adapt. The way traditional learning techniques can be adapted to this foreign domain is shockingly clean.

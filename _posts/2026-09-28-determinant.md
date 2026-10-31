@@ -9,7 +9,6 @@ image: /assets/images/determinant/thumbnail.jpg
 # A Holistic View of the Determinant
 
 **Will Healy**
-*September 2026*
 
 ## Motivation
 

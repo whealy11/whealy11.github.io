@@ -9,7 +9,6 @@ image: /assets/images/stiemke-theorem/thumbnail.jpg
 # Geometric Intuition for Risk Neutral Pricing
 
 **Will Healy**
-*September 2026*
 
 ## Motivation
 I wanted to write a piece on Stiemke's theorem because I think it's widely overlooked by practitioners of the fields which it touches. I'm refering particularly to the field of finance. Arbitrage pricing theory can be studied deeply without ever touching linear algebra. However, if you look at these same concepts through the lense of linear algebra, many results which originally seemed purely algebraic can be understood and visualized geometrically. I think this is quite powerful.

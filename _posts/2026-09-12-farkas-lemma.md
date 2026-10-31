@@ -9,7 +9,6 @@ image: /assets/images/farkas-lemma/thumbnail.png
 # Separability and Duality in Linear Programs
 
 **Will Healy**
-*September 2026*
 
 ## Introduction
 The goal of this piece is to understand duality in linear programming. To do this, we will first look at separability properties of cones and points using Farkas' Lemma. Once separability is well understood, we will apply this concept to linear programming, leading to both a motivation and derivation of the dual problem for a linear program. This piece assumes you have knowledge of hyperplanes, halfspaces, convext sets, and cones. The exact required prerequisite information for hyperplanese and halfspaces can be found [here](/notes/separability/), and the required prerequisite knowledge for convext sets and cones can be found [here](/notes/convex-sets/).

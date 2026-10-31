@@ -9,7 +9,6 @@ image: /assets/images/linear-attention/thumbnail.jpg
 # Linear Attention from First Principles
 
 **Will Healy**
-*September 2026*
 
 ## Introduction
 
