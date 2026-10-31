@@ -387,7 +387,7 @@ can be written in terms of $ p_1, p_2, ... p_{\|X\|} $.
 
 At a high level, we are going to do this by writing the coefficients of $g(t)$ in terms of the power sums $p_1, ... p_{\|X\|}$. The way we will get there is by deriving two different expressions for the derivative of $g(t)$. One formulation will contain only the coefficients of $g(t)$, which we denote $e_1, ... e_{\|X\|}$, and the other will contain the power sum terms and coefficients. By equating these two formulations, we will see that we can write each coefficeint $e_i$ in terms of only the power sum terms.
 
-*First Formulation of g'(t)*
+**First Formulation of g'(t)**
 
 As you hopefully know if you're reading this, terms of the form $ax^b$ are very easy to differentiate. Their derivative is simply $abx^{b-1}. Since $g$ is a polynomial of degree $\|X\|$, we can write $g$ as:
 
@@ -403,7 +403,7 @@ $$
 
 We will call this formulation 1.
 
-*Second Formulation of g'(t)*
+**Second Formulation of g'(t)**
 
 To create the second formulation we will first consider the derivative of the logarithm of $g(t)$. The derivative of the logarithm of a function $g$ is equal to the derivative of $g$ divided by $g$. That is, 
 
@@ -482,16 +482,10 @@ $$
 
 When $t > max_i(x_i)$.
 
-Let's stop here and think about what this means... Will[TODO]
+Let's stop here and think about what this means. We can write $g'(t)$ as the product of $g(t)$ and a term which only uses the power sum terms. For our purposes this isn't immediately impressive: we want to recover the polynomial from only the power sum terms and this intermediate term that we did all this work to derive literally includes the polynomial itself. But as we'll see in a second the $\frac{p_i}{t^{i+1}}$ terms will interact beautifully with the $e_jt^{\|X\| - j}$ terms to define the $t^{\|X\| - j - i - 1}$ terms.
 
 
-Now recall our original formulation of $g'(t)$:
-
-$$
-g'(t) = g(t)(\frac{|X|}{t} + \frac{p_1}{t^2} + \frac{p_2}{t^3} + \frac{p_3}{t^4} + ... \infty)
-$$
-
-By setting both formulations of $g'$ equal to each other we see that:
+By setting both formulations of $g'$ equal to each other we have that:
 
 $$
 \begin{aligned}
@@ -501,6 +495,7 @@ g'(t) &= g(t)(\frac{|X|}{t} + \frac{p_1}{t^2} + \frac{p_2}{t^3} + \frac{p_3}{t^4
 \end{aligned}
 $$
 
+*note that the first formulation is on the third line and the second formulation is on the first and second lines.*
 Now let's look at the last line. If we can recover the $e_i$ terms using only $p$ terms then we have not lost any information. 
 
 Let's think about the $e_1$ term in the third line. In the derivative, this is associated with the term:
