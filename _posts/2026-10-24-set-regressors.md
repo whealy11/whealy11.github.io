@@ -51,19 +51,27 @@ For functions with a one dimensional output, meaning $m = 1$, permutation equiva
 
 ## Intuitions on Set Regressors
 
-Set regressors learn a permutation invariant function of the elements in the set. Even though sets are not ordered, they still must be placed in an array on a computer. Since we're trying to learn a mapping from a set to an output, two orderings of the same set must be fed through a function which is permutation invariant. Otherwise, the output would depend on the ordering of the set, an inherently unordered object.
+Set regressors learn a permutation invariant function of the elements in the set. Even though sets are not ordered, they still must be placed in an array on a computer. Since we're trying to learn a mapping from a set to an output, two orderings of the same set must be fed through a function which is permutation invariant. Otherwise, the same set could be mapped to two different outputs.
 
 ### A First Attempt at Permutation Invariance
 
-When I first heard about this it sounded silly to me. I wondered why not just define an arbitrary ordering to the elements of the set based on some rule, such as by sorting, and then apply regular learning techniques to this vector. This would guarantee that the same set gets mapped to the same output because it will first get mapped to the same ordering. This makes an especially large amount of sense if you're regressing over sets of fixed cardinality. I think it's funny to imagine being given data which is pre-sorted. For example say you were given a list of sorted numbers and an associated value you're trying to predict. Your first thought would never be to first scramble the elements and then work with this unordered object. The sorted object contains at least as much information as the unordered object. Yet, here we are.
-
-There's a qwirk with the sorting method. The issue doens't exist for sets of numbers. But for sets of vectors, sorting the elements and then learning a function of this sorted list can learn discontinuous functions. For example imagine that you're sorting vectors in $R^2$ by considering the value of their first element, using each subsequent element to break ties. Take the two vectors $x_1 = [0, 0]$ and $x_2 = [\epsilon, 1]$. If the learned function is:
+When I first heard about this it sounded silly to me. I wondered why not just define an arbitrary ordering to the elements of the set based on some rule, such as by sorting, and then apply regular learning techniques to this vector. Specifically, if you learn a function $f$ over the sorted set, then your final function would be $g$ defined as:
 
 $$
-f(x_{11}, x_{12}, x_{21}, x_{22}) = x_{22},
+g(x) = f(s(x))
 $$
 
-then epsilon going from $\epsilon = 0.01$ to $\epsilon = -0.01$ would change the value of this function from 1 to 0, since the ordering would change from $[0, 0] < [0.01, 1]$ to $[0, 0] > [-0.01, 1]$. Thus, $x_{22}$ would go from being 1 to being 0.
+Where $s(x)$ sorts the elements of x. This would guarantee that the same set gets mapped to the same output because it will first get mapped to the same ordering. This makes an especially large amount of sense if you're regressing over sets of fixed cardinality. I think it's funny to imagine being given data which is pre-sorted. For example say you were given a list of sorted heights of a group of kids and were told to predict what grade they were in. Your first thought would never be to first scramble the elements and then work with this unordered object. The sorted object contains at least as much information as the unordered object. Yet, here we are.
+
+There's a qwirk with the sorting method. The issue doesn't exist for sets of numbers. But for sets of vectors, sorting the elements and then learning a continuous function of this sorted list can learn discontinuous functions of the original object.
+
+For example imagine that you're sorting vectors in $R^2$ by considering the value of their first element, using each subsequent element to break ties. Take the two vectors $x_1 = [0, 0]$ and $x_2 = [\epsilon, 1]$. If the learned function is:
+
+$$
+f(y_{11}, y_{12}, y_{21}, y_{22}) = y_{22},
+$$
+
+then epsilon going from $\epsilon = 0.01$ to $\epsilon = -0.01$ would change the value of this function from 1 to 0, since the ordering $s(x_1, x_2)$ would go from $[x_1, x_2]$ to $[x_2, x_1]$. Thus, $y_{22}$ would go from being 1 to being 0.
 
 This may be what you want in specific scenarios, but typically discontinuous functions are not good in regressions.
 
@@ -84,12 +92,12 @@ $$
 
 where the product of two vectors is their elementwise product.
 
-The first approach is the method used by the deep sets architecture. As we will prove rigorously below, if $\rho$ and $\phi$ are chosen perfectly, every single permutation invariant function can be written in both of these formats. This result is the primary contribution of the deep sets paper.
+The first approach is the method used by the deep sets architecture. As we will show below, $\rho$ and $\phi$ can be chosen to express every single permutation invariant function for countable universes, and every single continuous permutation invariant function for uncountable universes. This result is the primary contribution of the deep sets paper.
 
 
 ## Primary Result of Deep Sets
 
-Any permutation invariant function $f$ can be written as:
+Any continuous permutation invariant function $f$ can be written as:
 
 $$
 f(x) = \rho(\sum_i \phi(x_i))
