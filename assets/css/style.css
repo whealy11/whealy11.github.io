@@ -116,6 +116,22 @@ main img.figure-sm {
   cursor: default;
 }
 
+.notes-link {
+  margin: -20px 0 28px;
+  text-align: center;
+  font-size: 16px;
+  color: #555;
+}
+
+.notes-link a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.notes-link a:hover {
+  color: #222;
+}
+
 .essay-section {
   display: none;
 }
@@ -161,6 +177,30 @@ main img.figure-sm {
 .essay-info p a {
   color: inherit;
   text-decoration: underline;
+}
+
+.snowboarding-note {
+  margin: 0 0 28px;
+  font-size: 18px;
+  color: #333;
+}
+
+.snowboarding-note > *:first-child {
+  margin-top: 0;
+}
+
+.photo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.photo-grid img {
+  display: block;
+  margin: 0;
+  height: 150px;
+  width: auto;
+  border-radius: 4px;
 }
 
 @media (max-width: 650px) {

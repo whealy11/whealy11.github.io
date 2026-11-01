@@ -25,10 +25,9 @@ I hope you enjoy.
 </section>
 
 <section class="writing">
-  <div class="tabs">
-    <span class="tab active">Writing</span>
-    <a class="tab" href="/notes/">Notes</a>
-  </div>
+  {% include tabs.html %}
+
+  <p class="notes-link">Short pieces explaining prerequisite concepts exist in <a href="/notes/">notes</a>.</p>
 
   <div class="essay-section active-section">
     {% for post in site.posts %}
