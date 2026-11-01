@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Set Regressors Theory Deep Dive"
-description: "This does a deep dive into the theory behind the expressability of set regressors, proving several results introduced by the [Deep Sets](https://arxiv.org/pdf/1703.06114) paper. It first introduces the broad concepts of set regressors, rigorously proves a theorem which makes them perfmrom, and then does a brief overview of the architectures and applications of these techniques."
+description: "This does a deep dive into the theory behind the expressability of set regressors, proving several results introduced by the [Deep Sets](https://arxiv.org/pdf/1703.06114) paper. It first introduces the broad concepts of set regressors, rigorously proves a theorem which makes them perform, and then does a brief overview of the architectures and applications of these techniques."
 category: technical
 image: /assets/images/set-regressors/thumbnail.jpg
 ---
